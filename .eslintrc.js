@@ -24,6 +24,9 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': 'off',
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
     'no-unused-vars': 'off',
+    'no-unused-expressions': 'off',
+    '@typescript-eslint/no-unused-expressions': 'off',
+    '@typescript-eslint/no-require-imports': 'off',
     '@typescript-eslint/no-unused-vars': [
       'error',
       { varsIgnorePattern: '^_', argsIgnorePattern: '^_' },
