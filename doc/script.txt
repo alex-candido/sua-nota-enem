@@ -1,2 +1,0 @@
-Step1: bun i
-Step2: nvm use 20

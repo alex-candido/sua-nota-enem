@@ -1,0 +1,3 @@
+Step1: bun i
+Step2: nvm use 20
+Step3: bun run nest g resource nestjs-app/modules/users-module
