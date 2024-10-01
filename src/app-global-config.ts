@@ -28,7 +28,7 @@ export function applyGlobalConfig(
   });
   app.setViewEngine({
     engine: {
-      handlebars: require(viewEngine),
+      [viewEngine]: require(viewEngine),
     },
     templates: resolve(viewsPath),
   });
