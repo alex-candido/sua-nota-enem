@@ -1,0 +1,7 @@
+@layer components {
+  .layout-admin-aside {
+    .aside {
+      @apply h-full w-14 md:w-60 bg-base-200 !border-r;
+    }
+  }
+}

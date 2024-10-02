@@ -29,8 +29,9 @@
     "prisma:push": "dotenv -e ./envs/.env -- prisma db push --schema ./prisma/schema.prisma",
     "prisma:migrate": "dotenv -e ./envs/.env -- prisma migrate dev --schema ./prisma/schema.prisma",
     "prisma:studio": "dotenv -e ./envs/.env -- prisma studio --schema ./prisma/schema.prisma",
-    "tailwin:build": "npx tailwindcss -c ./tailwind.config.js -i assets/stylesheets/tailwind.css -o public/css/main.css",
-    "tailwind:watch": "npx tailwindcss -c ./tailwind.config.js -i assets/stylesheets/tailwind.css -o public/css/main.css --watch"
+    "tailwind:build": "npx tailwindcss -c ./tailwind.config.js -i assets/stylesheets/tailwind.css -o public/css/main.css",
+    "tailwind:watch": "npx tailwindcss -c ./tailwind.config.js -i assets/stylesheets/tailwind.css -o public/css/main.css --watch",
+    "build:ts": "bun build assets/typescript/main.ts --outdir ./public/js --watch"
   },
   "dependencies": {
     "@fastify/cookie": "^9.3.1",

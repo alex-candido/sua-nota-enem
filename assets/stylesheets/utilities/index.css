@@ -1,1 +1,5 @@
-@layer utilities {}
+@layer utilities {
+  .aside-collapse {
+    @apply transition-[width] ease-in-out;
+  }
+}

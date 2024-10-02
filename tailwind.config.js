@@ -2,7 +2,11 @@
 module.exports = {
   content: ['./views/*.pug', './views/**/*.pug'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        body: '#fbfbfb',
+      },
+    },
   },
   daisyui: {
     themes: ['light', 'dark', 'cupcake', 'night'],

@@ -1,0 +1,7 @@
+@layer components {
+  .layout-admin-navbar {
+    .navbar {
+      @apply !border-b;
+    }
+  }
+}

@@ -1,5 +1,11 @@
 @layer base {
   .layout-admin {
-    @apply !bg-gray-800;
+    @apply flex bg-body h-screen;
+  }
+  .layout-admin-container {
+    @apply flex flex-col h-full w-full;
+  }
+  .layout-admin-main {
+    @apply flex-1;
   }
 }

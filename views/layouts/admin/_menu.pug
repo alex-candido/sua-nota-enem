@@ -1,4 +1,12 @@
 .layout-admin-menu
-  ul
-    li: a(href="/v1/admin/dashboard") Dashboard
-    li: a(href="/v1/admin/users") Usuários
+  ul.menu.bg-base-200
+    li
+      a(href="/v1/admin/dashboard") Dashboard
+    li
+      a(href="/v1/admin/users") Usuários
+    li.collapse.bg-base-200(tabindex='0')
+      .collapse-title.min-h-0 Focus me to see content
+      .collapse-content
+        p tabindex=&quot;0&quot; attribute is necessary to make the div focusable
+
+
