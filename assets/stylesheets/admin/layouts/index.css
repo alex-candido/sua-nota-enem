@@ -1,0 +1,5 @@
+@layer base {
+  .layout-admin {
+    @apply !bg-gray-800;
+  }
+}

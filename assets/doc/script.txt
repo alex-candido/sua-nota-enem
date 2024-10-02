@@ -1,0 +1,6 @@
+Step1: bun i
+Step2: nvm use 20
+Step3: bun run nest g resource nestjs-app/modules/users-module
+npx tailwindcss -i ./assets/tailwind.css -o ./public/main.css
+"start:client": "cd client && bun run dev",
+"fullstack": "bun start:dev && bun run start:client",

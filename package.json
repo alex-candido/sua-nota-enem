@@ -28,7 +28,9 @@
     "prisma:generate": "dotenv -e ./envs/.env -- prisma generate --schema ./prisma/schema.prisma",
     "prisma:push": "dotenv -e ./envs/.env -- prisma db push --schema ./prisma/schema.prisma",
     "prisma:migrate": "dotenv -e ./envs/.env -- prisma migrate dev --schema ./prisma/schema.prisma",
-    "prisma:studio": "dotenv -e ./envs/.env -- prisma studio --schema ./prisma/schema.prisma"
+    "prisma:studio": "dotenv -e ./envs/.env -- prisma studio --schema ./prisma/schema.prisma",
+    "tailwin:build": "npx tailwindcss -c ./tailwind.config.js -i assets/stylesheets/tailwind.css -o public/css/main.css",
+    "tailwind:watch": "npx tailwindcss -c ./tailwind.config.js -i assets/stylesheets/tailwind.css -o public/css/main.css --watch"
   },
   "dependencies": {
     "@fastify/cookie": "^9.3.1",
@@ -42,23 +44,31 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/platform-fastify": "^10.3.8",
+    "@nestjs/serve-static": "^4.0.2",
     "@prisma/client": "^5.20.0",
     "@swc/cli": "^0.4.1-nightly.20240914",
     "@swc/core": "^1.7.26",
     "@swc/jest": "^0.2.36",
     "@types/ejs": "^3.1.5",
+    "autoprefixer": "^10.4.20",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
+    "daisyui": "^4.12.11",
     "dotenv": "^16.4.5",
     "dotenv-cli": "^7.3.0",
     "ejs": "^3.1.10",
     "handlebars": "^4.7.8",
     "hbs": "^4.2.0",
     "joi": "^17.13.3",
+    "nodemon": "^3.1.7",
+    "npx": "^10.2.2",
+    "postcss": "^8.4.47",
+    "postcss-import": "^16.1.0",
     "prisma": "^5.20.0",
     "pug": "^3.0.3",
     "reflect-metadata": "^0.2.0",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "tailwindcss": "^3.4.13"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",

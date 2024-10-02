@@ -1,0 +1,8 @@
+node_modules
+dist
+out
+.gitignore
+postcss.config.js
+tailwind.config.js
+public/
+

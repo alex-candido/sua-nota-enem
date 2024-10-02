@@ -1,0 +1,17 @@
+doctype html
+html(lang='pt-BR' data-theme="light")
+    head
+        meta(charset='UTF-8')
+        meta(http-equiv='X-UA-Compatible' content='IE=edge')
+        title SuaNotaEnem
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet' href='../../public/css/main.css')
+    body
+        .layout-admin
+            include ./admin/_aside.pug
+            .layout-admin-container
+                include ./admin/_navbar.pug
+                main.layout-admin-main
+                    block content
+                include ./admin/_footer.pug
+        script(src='../../public/js/main.js')

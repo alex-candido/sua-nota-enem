@@ -1,4 +1,4 @@
-import { resolve } from 'path';
+import { join, resolve } from 'path';
 
 import { CONFIG_ENVS_SCHEMA_TYPE } from '@nest/@share/config/@config.module';
 
@@ -14,7 +14,6 @@ export function applyGlobalConfig(
   const viewEngine = configService.get('VIEW_ENGINE')!;
   const globalPrefix = configService.get('GLOBAL_PREFIX')!;
   const origin = configService.get('ORIGIN')!;
-
   // [cors] https://docs.nestjs.com/security/cors
   app.enableCors({ origin, credentials: true });
 
@@ -23,13 +22,13 @@ export function applyGlobalConfig(
 
   // [MVC](https://docs.nestjs.com/techniques/mvc)
   app.useStaticAssets({
-    root: resolve(staticAssetsPath),
+    root: resolve(join(__dirname, '..', staticAssetsPath)),
     prefix: '/public',
   });
   app.setViewEngine({
     engine: {
       [viewEngine]: require(viewEngine),
     },
-    templates: resolve(viewsPath),
+    templates: resolve(join(__dirname, '../', viewsPath)),
   });
 }
