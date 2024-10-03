@@ -65,6 +65,7 @@
     "npx": "^10.2.2",
     "postcss": "^8.4.47",
     "postcss-import": "^16.1.0",
+    "preline": "^2.5.0",
     "prisma": "^5.20.0",
     "pug": "^3.0.3",
     "reflect-metadata": "^0.2.0",

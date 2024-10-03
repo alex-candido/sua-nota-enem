@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./views/*.pug', './views/**/*.pug'],
+  content: [
+    './views/*.pug',
+    './views/**/*.pug',
+    './node_modules/preline/dist/*.js',
+  ],
   theme: {
     extend: {
       colors: {
@@ -8,8 +12,5 @@ module.exports = {
       },
     },
   },
-  daisyui: {
-    themes: ['light', 'dark', 'cupcake', 'night'],
-  },
-  plugins: [require('daisyui')],
+  plugins: [require('preline/plugin')],
 };
