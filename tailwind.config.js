@@ -12,5 +12,15 @@ module.exports = {
       },
     },
   },
-  plugins: [require('preline/plugin')],
+  plugins: [
+    require('preline/plugin'),
+    require('postcss-import'),
+    require('autoprefixer'),
+    require('postcss-nested'),
+    require('postcss-flexbugs-fixes'),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/container-queries'),
+  ],
 };
