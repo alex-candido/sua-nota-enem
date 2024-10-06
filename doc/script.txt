@@ -1,0 +1,9 @@
+bun i
+nvm use 20
+bun run nest g resource nestjs-app/modules/users-module
+npx tailwindcss -i ./assets/tailwind.css -o ./public/main.css
+"start:client": "cd client && bun run dev",
+"fullstack": "bun start:dev && bun run start:client",
+"build:js": "uglifyjs public/js/main.js -o public/js/main.min.js -c -m"
+netstat -ano | findstr :3333
+taskkill /PID 2124 /F
