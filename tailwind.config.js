@@ -5,6 +5,7 @@ module.exports = {
     './views/**/*.pug',
     './node_modules/preline/dist/*.js',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {

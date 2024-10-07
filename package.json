@@ -53,6 +53,7 @@
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/platform-fastify": "^10.3.8",
     "@nestjs/serve-static": "^4.0.2",
+    "@preline/theme-switch": "^2.5.0",
     "@prisma/client": "^5.20.0",
     "@rollup/plugin-commonjs": "^28.0.0",
     "@rollup/plugin-node-resolve": "^15.3.0",

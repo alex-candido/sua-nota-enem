@@ -1,7 +1,22 @@
 @layer components {
   .layout-admin-aside {
-    /* .aside {
-      @apply h-full w-14 md:w-60 !border-r;
-    } */
+    .aside {
+      @apply translate-x-full transition-all duration-300 transform h-full hidden fixed inset-y-0 start-0 bg-white border-e border-gray-200 [--auto-close:lg] hs-overlay-open:translate-x-0 w-[260px] z-[60] lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 dark:bg-neutral-800 dark:border-neutral-700;
+    }
+    .aside-wrapper {
+      @apply relative flex flex-col h-full max-h-full;
+    }
+    .aside-brand {
+      @apply px-6 pt-4 pb-2;
+    }
+    .brand-link {
+      @apply flex gap-2 text-white rounded-xl text-xl font-semibold focus:outline-none focus:opacity-80;
+    }
+    .aside-container {
+      @apply h-full overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500;
+    }
+    .hs-accordion-group {
+      @apply !p-3 w-full flex flex-col flex-wrap;
+    }
   }
 }

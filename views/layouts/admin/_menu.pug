@@ -1,9 +1,120 @@
 .layout-admin-menu
-  ul.menu.bg-base-200
-    li
-      a(href="/v1/admin/dashboard") Dashboard
-    li
-      a(href="/v1/admin/users") Usuários
+  nav.menu.hs-accordion-group(data-hs-accordion-always-open='')
+    ul.menu-list
+      li
+        a.menu-link(class='dark:!bg-neutral-700' href='#')
+          .icon
+            i.fa-solid.fa-house
+          .label
+            span Dashboard
+      li#users-accordion.hs-accordion
+        button.hs-accordion-toggle(type='button' class='' aria-expanded='false' aria-controls='users-accordion-child')
+          .left-icon
+            i.fa-solid.fa-user-group
+          .label
+            span Users
+          .chevron-up(class='hs-accordion-active:block')
+            i.fa-solid.fa-chevron-up.h-3.w-3
+          .chevron-down(class='hs-accordion-active:hidden')
+            i.fa-solid.fa-chevron-down.h-3.w-3
+
+        #users-accordion-child.hs-accordion-content(class='' role='region' aria-labelledby='users-accordion' style='height: 0px;')
+          ul.hs-accordion-group.menu-group(data-hs-accordion-always-open='')
+
+            li#users-accordion-sub-1.hs-accordion
+              button.hs-accordion-toggle(type='button' class='0' aria-expanded='true' aria-controls='users-accordion-sub-1-child')
+                span Sub Menu 1
+                .chevron-up(class='hs-accordion-active:block')
+                  i.fa-solid.fa-chevron-up.h-3.w-3
+                .chevron-down(class='hs-accordion-active:hidden')
+                  i.fa-solid.fa-chevron-down.h-3.w-3
+
+              #users-accordion-sub-1-child.hs-accordion-content(class='' role='region' aria-labelledby='users-accordion-sub-1')
+                ul.pt-1.space-y-1
+                  li
+                    a.menu-link(class='' href='#')
+                      span Link 1
+                  li
+                    a.menu-link(class='' href='#')
+                      span Link 2
+                  li
+                    a.menu-link(class='' href='#')
+                      span Link 3
+
+            li#users-accordion-sub-2.hs-accordion
+              button.hs-accordion-toggle(type='button' class='' aria-expanded='true' aria-controls='users-accordion-sub-2-child')
+                span Sub Menu 2
+                .chevron-up(class='hs-accordion-active:block')
+                  i.fa-solid.fa-chevron-up.h-3.w-3
+                .chevron-down(class='hs-accordion-active:hidden')
+                  i.fa-solid.fa-chevron-down.h-3.w-3
+              #users-accordion-sub-2-child.hs-accordion-content(class='' role='region' aria-labelledby='users-accordion-sub-2')
+                ul.pt-1.space-y-1
+                  li
+                    a.menu-link(class='' href='#')
+                      span Link 1
+                  li
+                    a.menu-link(class='' href='#')
+                      span Link 2
+                  li
+                    a.menu-link(class='' href='#')
+                      span Link 3
+      li#account-accordion.hs-accordion
+        button.hs-accordion-toggle(type='button' class='' aria-expanded='true' aria-controls='account-accordion-child')
+          .left-icon
+            i.fa-solid.fa-user-gear
+          .label
+            span Account
+          .chevron-up(class='hs-accordion-active:block')
+            i.fa-solid.fa-chevron-up.h-3.w-3
+          .chevron-down(class='hs-accordion-active:hidden')
+            i.fa-solid.fa-chevron-down.h-3.w-3
+
+        #account-accordion-child.hs-accordion-content(class='' role='region' aria-labelledby='account-accordion')
+          ul.ps-8.pt-1.space-y-1
+            li
+              a.menu-link(class='' href='#')
+                span Link 1
+            li
+              a.menu-link(class='' href='#')
+                span Link 2
+            li
+              a.menu-link(class='' href='#')
+                span Link 3
+      li#projects-accordion.hs-accordion
+        button.hs-accordion-toggle(type='button' class='' aria-expanded='true' aria-controls='projects-accordion-child')
+          .left-icon
+            i.fa-solid.fa-briefcase
+          .label
+            span Projects
+          .chevron-up(class='hs-accordion-active:block')
+            i.fa-solid.fa-chevron-up.h-3.w-3
+          .chevron-down(class='hs-accordion-active:hidden')
+            i.fa-solid.fa-chevron-down.h-3.w-3
+
+        #projects-accordion-child.hs-accordion-content(class='' role='region' aria-labelledby='projects-accordion')
+          ul.ps-8.pt-1.space-y-1
+            li
+              a.menu-link(class='menu-link' href='#')
+                span Link 1
+            li
+              a.menu-link(class='menu-link' href='#')
+                span Link 2
+            li
+              a.menu-link(class='menu-link' href='#')
+                span Link 3
+      li
+        a.menu-link(class='' href='#')
+          .left-icon
+            i.fa-solid.fa-calendar-days
+          .label
+            span Calendar
+      li
+        a.menu-link(class='' href='#')
+          .left-icon
+            i.fa-solid.fa-book-open
+          .label
+            span Documentation
 
 
 
