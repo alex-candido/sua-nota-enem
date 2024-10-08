@@ -1,16 +1,15 @@
-.layout-admin-aside
-  #hs-application-sidebar.aside.hs-overlay(role='dialog' tabindex='-1' aria-label='Sidebar' class='' )
-      .aside-wrapper
-        .aside-brand
-          a.brand-link(href='#' aria-label='Preline')
-            .icon.block.md-hidden
-              object(type='image/svg+xml' data='/public/uploads/svg/sua-nota-enem-logo.svg')
-            .icon.hidden.md-block
-              object(type='image/svg+xml' data='/public/uploads/svg/mobile-sua-nota-enem-logo.svg')
-          // End Logo
-        hr.mb-4
-        // Content
-        .aside-container(class='')
-          .aside-content
-             include ./_menu.pug
-          .aside-bottom
+#hs-application-sidebar.layout-admin-aside(class='hs-overlay [--auto-close:lg] hs-overlay-open:translate-x-0 -translate-x-full transition-all duration-300 transform w-[260px] h-full fixed inset-y-0 start-0 z-[60] bg-white border-e border-gray-200 lg:block lg:translate-x-0 lg:end-auto lg:bottom-0 dark:bg-neutral-800 dark:border-neutral-700 open opened' role='dialog' tabindex='-1' aria-label='Sidebar' class='' )
+    .aside
+      .aside-brand
+        a.brand-link(href='#' aria-label='Preline')
+          .icon.block.md-hidden.fill-black(class="pb-[2px]")
+            object(type='image/svg+xml' data='/public/uploads/svg/nestjs-logo.svg')
+          .label.font-serif.text-black(class='dark:text-white')
+            span Admin
+            // End Logo
+      hr.mb-4
+      // Content
+      .aside-container(class='')
+        .aside-content
+            include ./_menu.pug
+        .aside-bottom

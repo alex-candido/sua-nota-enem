@@ -7,11 +7,8 @@ html(lang='pt-BR')
         meta(name='viewport' content='width=device-width, initial-scale=1.0')
         link(rel='stylesheet' href='../../public/build/css/tailwind-main.css')
     body.bg-gray-50(class='dark:bg-neutral-900')
-        .layout-admin
-            include ./admin/_aside.pug
-            .layout-admin-container
-                include ./admin/_navbar.pug
-                main.layout-admin-main
-                    block content
-                include ./admin/_footer.pug
+        include ./admin/_aside.pug
+        include ./admin/_navbar.pug
+        block content
+        include ./admin/_footer.pug
         script(type='module' src='../../public/build/js/main.js')
