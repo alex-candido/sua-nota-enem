@@ -22,12 +22,17 @@ export class RouterModule {
         RoutesApiModule,
         NestJsRouterModule.register([
           {
-            path: '/admin',
-            module: RoutesAdminModule,
+            path: 'v1',
+            children: [
+              {
+                path: '/api',
+                module: RoutesApiModule,
+              },
+            ],
           },
           {
-            path: '/api',
-            module: RoutesApiModule,
+            path: '/admin',
+            module: RoutesAdminModule,
           },
         ]),
       );

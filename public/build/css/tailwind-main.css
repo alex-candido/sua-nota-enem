@@ -1581,6 +1581,9 @@ select {
 .p-4 {
   padding: 1rem;
 }
+.p-8 {
+  padding: 2rem;
+}
 .\!py-0\.5 {
   padding-top: 0.125rem !important;
   padding-bottom: 0.125rem !important;
@@ -2302,8 +2305,8 @@ select {
     padding-inline-start: 0.75rem;
   }
 
-  .lg\:ps-64 {
-    padding-inline-start: 16rem;
+  .lg\:ps-\[16\.2rem\] {
+    padding-inline-start: 16.2rem;
   }
 }
 @media (min-width: 1280px) {

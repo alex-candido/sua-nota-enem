@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 
-import { UsersModuleModule } from '../../modules/users-module/users-module.module';
-import { UsersModuleApiController } from '@nest/modules/users-module/controllers/users-module.api.controller';
+import { UsersModuleModule } from '@nest/modules/v1/users-module/users-module.module';
+import { UsersModuleApiController } from '@nest/modules/v1/users-module/controllers/users-module.api.controller';
 
 @Module({
   imports: [UsersModuleModule],

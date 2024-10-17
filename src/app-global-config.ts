@@ -12,13 +12,16 @@ export function applyGlobalConfig(
   const staticAssetsPath = configService.get('STATIC_ASSETS_PATH')!;
   const viewsPath = configService.get('VIEWS_PATH')!;
   const viewEngine = configService.get('VIEW_ENGINE')!;
-  const globalPrefix = configService.get('GLOBAL_PREFIX')!;
   const origin = configService.get('ORIGIN')!;
+  // const globalPrefix = configService.get('GLOBAL_PREFIX')!;
+
   // [cors] https://docs.nestjs.com/security/cors
   app.enableCors({ origin, credentials: true });
 
   // [global-prefix] https://docs.nestjs.com/faq/global-prefix
-  app.setGlobalPrefix(globalPrefix);
+  // app.setGlobalPrefix(globalPrefix, {
+  //   exclude: [{ path: 'admin/users/*', method: RequestMethod.ALL }],
+  // });
 
   // [MVC](https://docs.nestjs.com/techniques/mvc)
   app.useStaticAssets({
