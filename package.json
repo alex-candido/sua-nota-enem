@@ -10,7 +10,7 @@
     "node": "v20.9.0"
   },
   "scripts": {
-    "build": "nest build",
+    "build": "bun i && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
