@@ -1,10 +1,5 @@
 import * as Joi from 'joi';
-
-export type VIEWS_SCHEMA_TYPE = {
-  STATIC_ASSETS_PATH: string;
-  VIEWS_PATH: string;
-  VIEW_ENGINE: string;
-};
+import { VIEWS_SCHEMA_TYPE } from '../../__types__/envs/views-schema';
 
 export const CONFIG_VIEWS_SCHEMA: Joi.StrictSchemaMap<VIEWS_SCHEMA_TYPE> = {
   STATIC_ASSETS_PATH: Joi.string().required(),

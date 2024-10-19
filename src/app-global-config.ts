@@ -9,9 +9,9 @@ export function applyGlobalConfig(
   app: NestFastifyApplication,
   configService: ConfigService<CONFIG_ENVS_SCHEMA_TYPE>,
 ) {
-  const staticAssetsPath = configService.get('STATIC_ASSETS_PATH')!;
-  const viewsPath = configService.get('VIEWS_PATH')!;
-  const viewEngine = configService.get('VIEW_ENGINE')!;
+  const _staticAssetsPath = configService.get('STATIC_ASSETS_PATH')!;
+  const _viewsPath = configService.get('VIEWS_PATH')!;
+  const _viewEngine = configService.get('VIEW_ENGINE')!;
   // const origin = configService.get('ORIGIN')!;
   // const globalPrefix = configService.get('GLOBAL_PREFIX')!;
 
@@ -25,13 +25,13 @@ export function applyGlobalConfig(
 
   // [MVC](https://docs.nestjs.com/techniques/mvc)
   app.useStaticAssets({
-    root: resolve(join(__dirname, '..', staticAssetsPath)),
+    root: resolve(join(__dirname, '../', 'public')),
     prefix: '/public',
   });
   app.setViewEngine({
     engine: {
-      [viewEngine]: require('pug'),
+      pug: require('pug'),
     },
-    templates: resolve(join(__dirname, '../', viewsPath)),
+    templates: resolve(join(__dirname, '../', 'views')),
   });
 }

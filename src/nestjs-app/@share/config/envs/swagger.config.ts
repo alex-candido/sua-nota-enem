@@ -1,10 +1,5 @@
 import * as Joi from 'joi';
-
-export type SWAGGER_SCHEMA_TYPE = {
-  SWAGGER_ENABLE: boolean;
-  SWAGGER_PATH: string;
-  SWAGGER_VERSION: string;
-};
+import { SWAGGER_SCHEMA_TYPE } from '../../__types__/envs/swagger-schema';
 
 export const CONFIG_SWAGGER_SCHEMA: Joi.StrictSchemaMap<SWAGGER_SCHEMA_TYPE> = {
   SWAGGER_ENABLE: Joi.boolean().required(),

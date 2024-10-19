@@ -10,7 +10,7 @@
     "node": "v20.9.0"
   },
   "scripts": {
-    "build": "bun i && nest build",
+    "build": "bun i && nest build && cp -R views dist/views",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -29,10 +29,10 @@
     "prisma:push": "dotenv -e ./envs/.env -- prisma db push --schema ./prisma/schema.prisma",
     "prisma:migrate": "dotenv -e ./envs/.env -- prisma migrate dev --schema ./prisma/schema.prisma",
     "prisma:studio": "dotenv -e ./envs/.env -- prisma studio --schema ./prisma/schema.prisma",
-    "tailwind:watch": "postcss assets/stylesheets/application.tailwind.css -o public/build/css/tailwind-main.css --watch",
-    "tailwind:build": "postcss assets/stylesheets/application.tailwind.css -o public/build/css/tailwind-main.css",
-    "sass:watch": "sass --watch assets/stylesheets/application.scss public/build/css/sass-main.css",
-    "build:ts": "bun build assets/typescript/main.ts --outdir public/build/js/ --watch",
+    "tailwind:watch": "postcss assets/stylesheets/application.tailwind.css -o public/css/tailwind-main.css --watch",
+    "tailwind:build": "postcss assets/stylesheets/application.tailwind.css -o public/css/tailwind-main.css",
+    "sass:watch": "sass --watch assets/stylesheets/application.scss public/css/sass-main.css",
+    "build:ts": "bun build assets/typescript/main.ts --outdir public/js/ --watch",
     "build:js": "rollup -c --bundleConfigAsCjs rollup.config.js"
   },
   "dependencies": {
@@ -54,6 +54,7 @@
     "@nestjs/platform-fastify": "^10.3.8",
     "@nestjs/serve-static": "^4.0.2",
     "@preline/theme-switch": "^2.5.0",
+    "@prisma/adapter-pg": "^5.21.1",
     "@prisma/client": "^5.20.0",
     "@rollup/plugin-commonjs": "^28.0.0",
     "@rollup/plugin-node-resolve": "^15.3.0",
@@ -80,6 +81,7 @@
     "joi": "^17.13.3",
     "nodemon": "^3.1.7",
     "npx": "^10.2.2",
+    "pg": "^8.13.0",
     "postcss": "^8.4.47",
     "postcss-cli": "^11.0.0",
     "postcss-flexbugs-fixes": "^5.0.2",

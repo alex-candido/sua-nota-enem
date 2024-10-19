@@ -26,14 +26,14 @@
     "moduleResolution": "Node",
     "esModuleInterop": true,
     "allowJs": true,
-    "paths": {
-      "@core/*": [
-        "./src/core/*"
-      ],
-      "@nest/*": [
-        "src/nestjs-app/*"
-      ]
-    }
+    // "paths": {
+    //   "@core/*": [
+    //     "./src/core/*"
+    //   ],
+    //   "@nest/*": [
+    //     "src/nestjs-app/*"
+    //   ]
+    // }
   },
   "include": [
     "./src",

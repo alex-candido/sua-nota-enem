@@ -7,27 +7,12 @@ import {
   ConfigModule as NestConfigModule,
 } from '@nestjs/config';
 
-import { APP_SCHEMA_TYPE, CONFIG_APP_SCHEMA } from './envs/app.config';
+import { CONFIG_APP_SCHEMA } from './envs/app.config';
 
-import { CONFIG_DB_SCHEMA, DB_SCHEMA_TYPE } from './envs/database.config';
-import {
-  CONFIG_SWAGGER_SCHEMA,
-  SWAGGER_SCHEMA_TYPE,
-} from './envs/swagger.config';
-
-import {
-  CONFIG_SECURITY_SCHEMA,
-  SECURITY_SCHEMA_TYPE,
-} from './envs/security.config';
-
-import { CONFIG_VIEWS_SCHEMA, VIEWS_SCHEMA_TYPE } from './envs/views.config';
-
-export interface CONFIG_ENVS_SCHEMA_TYPE
-  extends APP_SCHEMA_TYPE,
-    DB_SCHEMA_TYPE,
-    SECURITY_SCHEMA_TYPE,
-    SWAGGER_SCHEMA_TYPE,
-    VIEWS_SCHEMA_TYPE {}
+import { CONFIG_DB_SCHEMA } from './envs/database.config';
+import { CONFIG_SECURITY_SCHEMA } from './envs/security.config';
+import { CONFIG_SWAGGER_SCHEMA } from './envs/swagger.config';
+import { CONFIG_VIEWS_SCHEMA } from './envs/views.config';
 
 @Module({})
 export class ConfigModule extends NestConfigModule {

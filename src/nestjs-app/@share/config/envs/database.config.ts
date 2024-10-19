@@ -1,9 +1,5 @@
 import * as Joi from 'joi';
-
-export type DB_SCHEMA_TYPE = {
-  DATABASE_MONGODB_URL: string;
-  DATABASE_POSTGRESS_URL: string;
-};
+import { DB_SCHEMA_TYPE } from '../../__types__/envs/db-schema';
 
 export const CONFIG_DB_SCHEMA: Joi.StrictSchemaMap<DB_SCHEMA_TYPE> = {
   DATABASE_MONGODB_URL: Joi.string().required(),

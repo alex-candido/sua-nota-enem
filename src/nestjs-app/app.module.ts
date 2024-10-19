@@ -4,9 +4,10 @@ import { AppService } from './app.service';
 
 import { ConfigModule } from './@share/config/@config.module';
 import { RouterModule } from './router/router.module';
+import { PrismaModule } from './@share/database/prisma/prisma.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), RouterModule.forRoot()],
+  imports: [ConfigModule.forRoot(), RouterModule.forRoot(), PrismaModule],
   controllers: [AppController],
   providers: [AppService],
 })

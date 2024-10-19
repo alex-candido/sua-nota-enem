@@ -1,14 +1,5 @@
 import * as Joi from 'joi';
-
-export type APP_SCHEMA_TYPE = {
-  APP_NAME: string;
-  APP_PORT: number;
-  APP_BASE_URL: string;
-  GLOBAL_PREFIX: string;
-  APP_LOCALE: string;
-  MULTI_DEVICE_LOGIN: boolean;
-  ORIGIN: string;
-};
+import { APP_SCHEMA_TYPE } from '../../__types__/envs/app-schema';
 
 export const CONFIG_APP_SCHEMA: Joi.StrictSchemaMap<APP_SCHEMA_TYPE> = {
   APP_NAME: Joi.string().required(),
