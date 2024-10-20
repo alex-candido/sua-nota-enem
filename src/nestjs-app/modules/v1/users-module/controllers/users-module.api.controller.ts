@@ -21,10 +21,15 @@ import { UserPresenter } from '../presenters/user.presenter';
 import { UserCollectionSerialize } from '../serializes/user-collection.serialize';
 import { UserSerialize } from '../serializes/user.serialize';
 
-/* controllers: search, filter, findAll, findOne, createMany, createOne,
-updateMany, updateOne, removeMany, removeOne */
+import { API_ROUTES } from '../constants/routes/user-api-routes.constants';
 
-@Controller('/users')
+/* controllers: findAll, findOne, createMany, createOne,
+updateMany, updateOne, removeMany, removeOne, search, filter */
+
+@Controller({
+  path: API_ROUTES.USERS.HEADER.CONTROLLER,
+  version: API_ROUTES.USERS.HEADER.VERSION,
+})
 export class UsersModuleApiController {
   constructor(
     private readonly usersModuleService: UsersModuleService,
@@ -34,15 +39,7 @@ export class UsersModuleApiController {
     private readonly userPresenter: UserPresenter,
   ) {}
 
-  async filter() {
-    return {};
-  }
-
-  async search() {
-    return {};
-  }
-
-  @Get('/')
+  @Get(API_ROUTES.USERS.API.FIND_ALL.ROUTE)
   async findAll(@Query() findAllUserModuleDto: FindAllUserModuleDto) {
     const serviceOutput =
       await this.usersModuleService.findAll(findAllUserModuleDto);
@@ -63,7 +60,7 @@ export class UsersModuleApiController {
     };
   }
 
-  @Get('/:id')
+  @Get(API_ROUTES.USERS.API.FIND_ONE.ROUTE)
   async findOne(
     @Param('id', new ParseUUIDPipe({ errorHttpStatusCode: 422 })) id: string,
   ) {
@@ -81,11 +78,19 @@ export class UsersModuleApiController {
     };
   }
 
+  @Post(API_ROUTES.USERS.API.CREATE_MANY.ROUTE)
   async createMany() {
-    return {};
+    return {
+      data: {},
+      httpStatus: HttpStatus.OK,
+      message: {
+        translationKey: 'shared.success.createMany',
+        args: { entity: 'entities.user' },
+      },
+    };
   }
 
-  @Post('/')
+  @Post(API_ROUTES.USERS.API.CREATE_ONE.ROUTE)
   async createOne(@Body() createOneUserModuleDto: CreateOneUserModuleDto) {
     const serviceOutput = await this.usersModuleService.createOne(
       createOneUserModuleDto,
@@ -97,17 +102,25 @@ export class UsersModuleApiController {
       data: userPresenter,
       httpStatus: HttpStatus.OK,
       message: {
-        translationKey: 'shared.success.create',
+        translationKey: 'shared.success.createOne',
         args: { entity: 'entities.user' },
       },
     };
   }
 
+  @Patch(API_ROUTES.USERS.API.UPDATE_MANY.ROUTE)
   async updateMany() {
-    return {};
+    return {
+      data: {},
+      httpStatus: HttpStatus.OK,
+      message: {
+        translationKey: 'shared.success.updateMany',
+        args: { entity: 'entities.user' },
+      },
+    };
   }
 
-  @Patch('/:id')
+  @Patch(API_ROUTES.USERS.API.UPDATE_ONE.ROUTE)
   async updateOne(
     @Param('id', new ParseUUIDPipe({ errorHttpStatusCode: 422 })) id: string,
     @Body() updateUserModuleDto: UpdateUserModuleDto,
@@ -129,14 +142,43 @@ export class UsersModuleApiController {
     };
   }
 
+  @Delete(API_ROUTES.USERS.API.REMOVE_MANY.ROUTE)
   async removeMany() {
     return {};
   }
 
-  @Delete('/:id')
+  @Delete(API_ROUTES.USERS.API.REMOVE_ONE.ROUTE)
   async removeOne(
     @Param('id', new ParseUUIDPipe({ errorHttpStatusCode: 422 })) id: string,
   ) {
     return this.usersModuleService.removeOne({ id });
+  }
+
+  @Get(API_ROUTES.USERS.API.FILTER.ROUTE)
+  async filter() {
+    return {
+      data: {},
+      httpStatus: HttpStatus.OK,
+      message: {
+        translationKey: 'shared.success.filter',
+        args: {
+          entity: 'entities.user',
+        },
+      },
+    };
+  }
+
+  @Get(API_ROUTES.USERS.API.SEARCH.ROUTE)
+  async search() {
+    return {
+      data: {},
+      httpStatus: HttpStatus.OK,
+      message: {
+        translationKey: 'shared.success.search',
+        args: {
+          entity: 'entities.user',
+        },
+      },
+    };
   }
 }

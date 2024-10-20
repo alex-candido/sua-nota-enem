@@ -6,19 +6,11 @@ import { GetUserModuleDto } from '../dtos/get-one-user-module.dto';
 import { RemoveUserModuleDto } from '../dtos/remove-one-user-module.dto';
 import { UpdateUserModuleDto } from '../dtos/update-one-user-module.dto';
 
-/* services: search, filter, findAll, findOne, createMany, createOne,
-updateMany, updateOne, removeMany, removeOne */
+/* services: findAll, findOne, createMany, createOne,
+updateMany, updateOne, removeMany, removeOne, search, filter */
 
 @Injectable()
 export class UsersModuleService {
-  async filter() {
-    return 'This action searches users based criteria and pagination';
-  }
-
-  async search() {
-    return 'This action searches users based criteria and pagination';
-  }
-
   async findAll(_findAllUserModuleDto: FindAllUserModuleDto) {
     return `This action findAll users based on pagination`;
   }
@@ -49,5 +41,13 @@ export class UsersModuleService {
 
   async removeOne(_removeUserModuleDto: RemoveUserModuleDto) {
     return `This action removes a specific user module`;
+  }
+
+  async filter() {
+    return 'This action searches users based criteria and pagination';
+  }
+
+  async search() {
+    return 'This action searches users based criteria and pagination';
   }
 }
