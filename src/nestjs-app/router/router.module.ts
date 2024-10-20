@@ -1,8 +1,8 @@
 import { DynamicModule, ForwardReference, Module, Type } from '@nestjs/common';
 import { RouterModule as NestJsRouterModule } from '@nestjs/core';
 
-import { RoutesAdminModule } from '../router/application-routes/v1/routes.admin.module';
-import { RoutesApiModule } from '../router/application-routes/v1/routes.api.module';
+import { RoutesAdminModule } from './application-routes/v1/routes.admin.module';
+import { RoutesApiModule } from './application-routes/v1/routes.api.module';
 
 @Module({})
 export class RouterModule {
@@ -22,13 +22,8 @@ export class RouterModule {
         RoutesApiModule,
         NestJsRouterModule.register([
           {
-            path: 'v1',
-            children: [
-              {
-                path: '/api',
-                module: RoutesApiModule,
-              },
-            ],
+            path: '/api',
+            module: RoutesApiModule,
           },
           {
             path: '/admin',

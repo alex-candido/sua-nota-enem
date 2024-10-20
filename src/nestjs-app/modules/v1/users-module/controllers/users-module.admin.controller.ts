@@ -1,6 +1,8 @@
 import { Controller, Get, Param, Render } from '@nestjs/common';
 import { UsersModuleService } from '../services/users-module.service';
 
+/* controllers: index, show, create, edit */
+
 @Controller('/users')
 export class UsersModuleAdminController {
   constructor(private readonly usersModuleService: UsersModuleService) {}
