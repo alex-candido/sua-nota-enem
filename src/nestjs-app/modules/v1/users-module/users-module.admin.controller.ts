@@ -1,7 +1,7 @@
 import { Controller, Get, Param, Render } from '@nestjs/common';
-import { UsersModuleService } from '../services/users-module.service';
+import { UsersModuleService } from './users-module.service';
 
-import { ADMIN_ROUTES } from '../constants/routes/user-admin-routes.constants';
+import { ADMIN_ROUTES } from './constants/routes/user-admin-routes.constants';
 
 /* controllers: index, show, create, edit */
 

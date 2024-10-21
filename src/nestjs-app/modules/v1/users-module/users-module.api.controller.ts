@@ -11,17 +11,19 @@ import {
   Query,
 } from '@nestjs/common';
 
-import { CreateOneUserModuleDto } from '../dtos/create-one-user-module.dto';
-import { FindAllUserModuleDto } from '../dtos/find-all-user-module.dto';
-import { UpdateUserModuleDto } from '../dtos/update-one-user-module.dto';
-import { UsersModuleService } from '../services/users-module.service';
+import { CreateOneUserModuleDto } from './dtos/create-one-user-module.dto';
+import { FindAllUserModuleDto } from './dtos/find-all-user-module.dto';
+import { UpdateUserModuleDto } from './dtos/update-one-user-module.dto';
+import { UsersModuleService } from './users-module.service';
 
-import { UserCollectionPresenter } from '../presenters/user-collection.presenter';
-import { UserPresenter } from '../presenters/user.presenter';
-import { UserCollectionSerialize } from '../serializes/user-collection.serialize';
-import { UserSerialize } from '../serializes/user.serialize';
+import { UserCollectionPresenter } from './presenters/user-collection.presenter';
+import { UserPresenter } from './presenters/user.presenter';
+import { UserCollectionSerialize } from './serializes/user-collection.serialize';
+import { UserSerialize } from './serializes/user.serialize';
 
-import { API_ROUTES } from '../constants/routes/user-api-routes.constants';
+import { API_ROUTES } from './constants/routes/user-api-routes.constants';
+import { SearchUserModuleDto } from './dtos/search-user-module.dto';
+import { FilterUserModuleDto } from './dtos/filter-user-module.dto';
 
 /* controllers: findAll, findOne, createMany, createOne,
 updateMany, updateOne, removeMany, removeOne, search, filter */
@@ -79,9 +81,17 @@ export class UsersModuleApiController {
   }
 
   @Post(API_ROUTES.USERS.API.CREATE_MANY.ROUTE)
-  async createMany() {
+  async createMany(@Body() createManyUserModuleDto: CreateOneUserModuleDto[]) {
+    const serviceOutput = await this.usersModuleService.createMany(
+      createManyUserModuleDto,
+    );
+    const serializeOutput =
+      await this.userCollectionSerialize.serialize(serviceOutput);
+    const userCollectionPresenter =
+      await this.userCollectionPresenter.presenter(serializeOutput);
+
     return {
-      data: {},
+      data: userCollectionPresenter,
       httpStatus: HttpStatus.OK,
       message: {
         translationKey: 'shared.success.createMany',
@@ -109,9 +119,17 @@ export class UsersModuleApiController {
   }
 
   @Patch(API_ROUTES.USERS.API.UPDATE_MANY.ROUTE)
-  async updateMany() {
+  async updateMany(@Body() updateManyUserModuleDto: UpdateUserModuleDto[]) {
+    const serviceOutput = await this.usersModuleService.updateMany(
+      updateManyUserModuleDto,
+    );
+    const serializeOutput =
+      await this.userCollectionSerialize.serialize(serviceOutput);
+    const userCollectionPresenter =
+      await this.userCollectionPresenter.presenter(serializeOutput);
+
     return {
-      data: {},
+      data: userCollectionPresenter,
       httpStatus: HttpStatus.OK,
       message: {
         translationKey: 'shared.success.updateMany',
@@ -143,8 +161,16 @@ export class UsersModuleApiController {
   }
 
   @Delete(API_ROUTES.USERS.API.REMOVE_MANY.ROUTE)
-  async removeMany() {
-    return {};
+  async removeMany(@Body('ids') ids: string[]) {
+    const serviceOutput = await this.usersModuleService.removeMany(ids);
+    return {
+      data: serviceOutput,
+      httpStatus: HttpStatus.OK,
+      message: {
+        translationKey: 'shared.success.removeMany',
+        args: { entity: 'entities.user' },
+      },
+    };
   }
 
   @Delete(API_ROUTES.USERS.API.REMOVE_ONE.ROUTE)
@@ -155,9 +181,16 @@ export class UsersModuleApiController {
   }
 
   @Get(API_ROUTES.USERS.API.FILTER.ROUTE)
-  async filter() {
+  async filter(@Query() filterUserModuleDto: FilterUserModuleDto) {
+    const serviceOutput =
+      await this.usersModuleService.filter(filterUserModuleDto);
+    const serializeOutput =
+      await this.userCollectionSerialize.serialize(serviceOutput);
+    const userCollectionPresenter =
+      await this.userCollectionPresenter.presenter(serializeOutput);
+
     return {
-      data: {},
+      data: userCollectionPresenter,
       httpStatus: HttpStatus.OK,
       message: {
         translationKey: 'shared.success.filter',
@@ -169,9 +202,16 @@ export class UsersModuleApiController {
   }
 
   @Get(API_ROUTES.USERS.API.SEARCH.ROUTE)
-  async search() {
+  async search(@Query() searchUserModuleDto: SearchUserModuleDto) {
+    const serviceOutput =
+      await this.usersModuleService.search(searchUserModuleDto);
+    const serializeOutput =
+      await this.userCollectionSerialize.serialize(serviceOutput);
+    const userCollectionPresenter =
+      await this.userCollectionPresenter.presenter(serializeOutput);
+
     return {
-      data: {},
+      data: userCollectionPresenter,
       httpStatus: HttpStatus.OK,
       message: {
         translationKey: 'shared.success.search',
