@@ -22,8 +22,9 @@ import { UserCollectionSerialize } from './serializes/user-collection.serialize'
 import { UserSerialize } from './serializes/user.serialize';
 
 import { API_ROUTES } from './constants/routes/user-api-routes.constants';
-import { SearchUserModuleDto } from './dtos/search-user-module.dto';
 import { FilterUserModuleDto } from './dtos/filter-user-module.dto';
+import { RemoveManyUserModuleDto } from './dtos/remove-many-user-module.dto';
+import { SearchUserModuleDto } from './dtos/search-user-module.dto';
 
 /* controllers: findAll, findOne, createMany, createOne,
 updateMany, updateOne, removeMany, removeOne, search, filter */
@@ -161,8 +162,12 @@ export class UsersModuleApiController {
   }
 
   @Delete(API_ROUTES.USERS.API.REMOVE_MANY.ROUTE)
-  async removeMany(@Body('ids') ids: string[]) {
-    const serviceOutput = await this.usersModuleService.removeMany(ids);
+  async removeMany(
+    @Body('ids') removeManyUserModuleDto: RemoveManyUserModuleDto,
+  ) {
+    const serviceOutput = await this.usersModuleService.removeMany(
+      removeManyUserModuleDto,
+    );
     return {
       data: serviceOutput,
       httpStatus: HttpStatus.OK,

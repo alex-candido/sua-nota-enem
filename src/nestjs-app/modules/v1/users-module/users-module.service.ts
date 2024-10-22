@@ -1,23 +1,27 @@
 import { Inject, Injectable } from '@nestjs/common';
 
+import { CreateManyUsersModuleDto } from './dtos/create-many-users-module.dto';
 import { CreateOneUserModuleDto } from './dtos/create-one-user-module.dto';
+import { FilterUserModuleDto } from './dtos/filter-user-module.dto';
 import { FindAllUserModuleDto } from './dtos/find-all-user-module.dto';
 import { FindOneUserModuleDto } from './dtos/find-one-user-module.dto';
-import { RemoveUserModuleDto } from './dtos/remove-one-user-module.dto';
-import { UpdateUserModuleDto } from './dtos/update-one-user-module.dto';
+import { RemoveOneUserModuleDto } from './dtos/remove-one-user-module.dto';
 import { SearchUserModuleDto } from './dtos/search-user-module.dto';
-import { FilterUserModuleDto } from './dtos/filter-user-module.dto';
+import { UpdateUserModuleDto } from './dtos/update-one-user-module.dto';
 
-import { CreateOneUserUseCase } from '../../../../core/modules/v1/users-module/application/use-cases/create-one-user/create-one-user.use-case';
-import { FindAllUsersUseCase } from '../../../../core/modules/v1/users-module/application/use-cases/find-all-users/find-all-users.use-case';
-import { FindOneUserUseCase } from '../../../../core/modules/v1/users-module/application/use-cases/find-one-user/find-one-user.use-case';
-import { CreateManyUsersUseCase } from '../../../../core/modules/v1/users-module/application/use-cases/create-many-users/create-many-users.use-case';
-import { UpdateManyUsersUseCase } from '../../../../core/modules/v1/users-module/application/use-cases/update-many-users/update-many-users.use-case';
-import { UpdateOneUserUseCase } from '../../../../core/modules/v1/users-module/application/use-cases/update-one-user/update-one-user.use-case';
-import { RemoveManyUsersUseCase } from '../../../../core/modules/v1/users-module/application/use-cases/remove-many-users/remove-many-users.use-case';
-import { RemoveOneUserUseCase } from '../../../../core/modules/v1/users-module/application/use-cases/remove-one-user/remove-one-user.use-case';
-import { SearchUsersUseCase } from '../../../../core/modules/v1/users-module/application/use-cases/search-users/search-users.use-case';
-import { FilterUsersUseCase } from '../../../../core/modules/v1/users-module/application/use-cases/filter-users/filter-users.use-case';
+import {
+  CreateManyUsersUseCase,
+  CreateOneUserUseCase,
+  FilterUsersUseCase,
+  FindAllUsersUseCase,
+  FindOneUserUseCase,
+  RemoveManyUsersUseCase,
+  RemoveOneUserUseCase,
+  SearchUsersUseCase,
+  UpdateManyUsersUseCase,
+  UpdateOneUserUseCase,
+} from '../../../../core/modules/v1/users-module/application/use-cases/api-use-cases';
+import { RemoveManyUserModuleDto } from './dtos/remove-many-user-module.dto';
 
 /* services: findAll, findOne, createMany, createOne,
 updateMany, updateOne, removeMany, removeOne, search, filter */
@@ -54,43 +58,43 @@ export class UsersModuleService {
   @Inject(FilterUsersUseCase)
   private filterUseCase: FilterUsersUseCase;
 
-  async findAll(_findAllUserModuleDto: FindAllUserModuleDto) {
-    return await this.findAllUseCase.execute(_findAllUserModuleDto);
+  async findAll(findAllUserModuleDto: FindAllUserModuleDto) {
+    return await this.findAllUseCase.execute(findAllUserModuleDto);
   }
 
-  async findOne(_findOneUserModuleDto: FindOneUserModuleDto) {
-    return await this.findOneUseCase.execute(_findOneUserModuleDto);
+  async findOne(findOneUserModuleDto: FindOneUserModuleDto) {
+    return await this.findOneUseCase.execute(findOneUserModuleDto);
   }
 
-  async createMany(_createManyUserModuleDto: CreateOneUserModuleDto[]) {
-    return await this.createManyUseCase.execute(_createManyUserModuleDto);
+  async createMany(createManyUsersModuleDto: CreateManyUsersModuleDto[]) {
+    return await this.createManyUseCase.execute(createManyUsersModuleDto);
   }
 
-  async createOne(_createUserModuleDto: CreateOneUserModuleDto) {
-    return await this.createOneUseCase.execute(_createUserModuleDto);
+  async createOne(createUserModuleDto: CreateOneUserModuleDto) {
+    return await this.createOneUseCase.execute(createUserModuleDto);
   }
 
-  async updateMany(_updateManyUserModuleDto: UpdateUserModuleDto[]) {
-    return await this.updateManyUseCase.execute(_updateManyUserModuleDto);
+  async updateMany(updateManyUserModuleDto: UpdateUserModuleDto[]) {
+    return await this.updateManyUseCase.execute(updateManyUserModuleDto);
   }
 
-  async updateOne(_id: string, _updateUserModuleDto: UpdateUserModuleDto) {
-    return await this.updateOneUseCase.execute(_id, _updateUserModuleDto);
+  async updateOne(id: string, updateUserModuleDto: UpdateUserModuleDto) {
+    return await this.updateOneUseCase.execute(id, updateUserModuleDto);
   }
 
-  async removeMany(_ids: string[]) {
-    return await this.removeManyUseCase.execute(_ids);
+  async removeMany(removeManyUserModuleDto: RemoveManyUserModuleDto) {
+    return await this.removeManyUseCase.execute(removeManyUserModuleDto);
   }
 
-  async removeOne(_removeUserModuleDto: RemoveUserModuleDto) {
-    return await this.removeOneUseCase.execute(_removeUserModuleDto);
+  async removeOne(removeUserModuleDto: RemoveOneUserModuleDto) {
+    return await this.removeOneUseCase.execute(removeUserModuleDto);
   }
 
-  async filter(_filterUserModuleDto: FilterUserModuleDto) {
-    return await this.filterUseCase.execute(_filterUserModuleDto);
+  async filter(filterUserModuleDto: FilterUserModuleDto) {
+    return await this.filterUseCase.execute(filterUserModuleDto);
   }
 
-  async search(_searchUserModuleDto: SearchUserModuleDto) {
-    return await this.searchUseCase.execute(_searchUserModuleDto);
+  async search(searchUserModuleDto: SearchUserModuleDto) {
+    return await this.searchUseCase.execute(searchUserModuleDto);
   }
 }

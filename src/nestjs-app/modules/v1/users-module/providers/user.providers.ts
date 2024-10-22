@@ -1,17 +1,19 @@
-import { PrismaService } from '../../../../../nestjs-app/@share/database/prisma/implementations/prisma.service';
-import { UserPrismaRepository } from '../../../../../core/modules/v1/users-module/infra/db/prisma/repositories/user-prisma.repository';
 import { IUserRepository } from '../../../../../core/modules/v1/users-module/domain/repository/user.repository';
+import { UserPrismaRepository } from '../../../../../core/modules/v1/users-module/infra/db/prisma/repositories/user-api.repository';
+import { PrismaService } from '../../../../../nestjs-app/@share/database/prisma/implementations/prisma.service';
 
-import { CreateOneUserUseCase } from '../../../../../core/modules/v1/users-module/application/use-cases/create-one-user/create-one-user.use-case';
-import { FindAllUsersUseCase } from '../../../../../core/modules/v1/users-module/application/use-cases/find-all-users/find-all-users.use-case';
-import { FindOneUserUseCase } from '../../../../../core/modules/v1/users-module/application/use-cases/find-one-user/find-one-user.use-case';
-import { CreateManyUsersUseCase } from '../../../../../core/modules/v1/users-module/application/use-cases/create-many-users/create-many-users.use-case';
-import { UpdateManyUsersUseCase } from '../../../../../core/modules/v1/users-module/application/use-cases/update-many-users/update-many-users.use-case';
-import { UpdateOneUserUseCase } from '../../../../../core/modules/v1/users-module/application/use-cases/update-one-user/update-one-user.use-case';
-import { RemoveManyUsersUseCase } from '../../../../../core/modules/v1/users-module/application/use-cases/remove-many-users/remove-many-users.use-case';
-import { RemoveOneUserUseCase } from '../../../../../core/modules/v1/users-module/application/use-cases/remove-one-user/remove-one-user.use-case';
-import { SearchUsersUseCase } from '../../../../../core/modules/v1/users-module/application/use-cases/search-users/search-users.use-case';
-import { FilterUsersUseCase } from '../../../../../core/modules/v1/users-module/application/use-cases/filter-users/filter-users.use-case';
+import {
+  CreateManyUsersUseCase,
+  CreateOneUserUseCase,
+  FilterUsersUseCase,
+  FindAllUsersUseCase,
+  FindOneUserUseCase,
+  RemoveManyUsersUseCase,
+  RemoveOneUserUseCase,
+  SearchUsersUseCase,
+  UpdateManyUsersUseCase,
+  UpdateOneUserUseCase,
+} from '../../../../../core/modules/v1/users-module/application/use-cases/api-use-cases';
 
 export const REPOSITORIES = {
   USER_REPOSITORY: {

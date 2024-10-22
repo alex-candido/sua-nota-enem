@@ -1,1 +1,1 @@
-export class RemoveUserModuleDto {}
+export class RemoveOneUserModuleDto {}

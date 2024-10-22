@@ -31,5 +31,6 @@ module.exports = {
       'error',
       { varsIgnorePattern: '^_', argsIgnorePattern: '^_' },
     ],
+    '@typescript-eslint/no-empty-object-type': 'off',
   },
 };
