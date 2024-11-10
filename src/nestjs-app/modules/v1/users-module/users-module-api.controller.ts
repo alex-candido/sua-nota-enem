@@ -5,26 +5,34 @@ import {
   Get,
   HttpStatus,
   Param,
+  ParseArrayPipe,
   ParseUUIDPipe,
   Patch,
   Post,
   Query,
 } from '@nestjs/common';
 
-import { CreateOneUserModuleDto } from './dtos/create-one-user-module.dto';
-import { FindAllUserModuleDto } from './dtos/find-all-user-module.dto';
-import { UpdateUserModuleDto } from './dtos/update-one-user-module.dto';
-import { UsersModuleService } from './users-module.service';
+import {
+  CreateManyUsersModuleDto,
+  FilterUserModuleDto,
+  FindAllUserModuleDto,
+  SearchUserModuleDto,
+  UpdateManyUsersModuleDto,
+} from './dtos/user-collection.dto';
+import {
+  CreateOneUserModuleDto,
+  RemoveManyUserModuleDto,
+  UpdateUserModuleDto,
+} from './dtos/user.dto';
 
 import { UserCollectionPresenter } from './presenters/user-collection.presenter';
 import { UserPresenter } from './presenters/user.presenter';
 import { UserCollectionSerialize } from './serializes/user-collection.serialize';
 import { UserSerialize } from './serializes/user.serialize';
 
+import { instanceToPlain } from 'class-transformer';
 import { API_ROUTES } from './constants/routes/user-api-routes.constants';
-import { FilterUserModuleDto } from './dtos/filter-user-module.dto';
-import { RemoveManyUserModuleDto } from './dtos/remove-many-user-module.dto';
-import { SearchUserModuleDto } from './dtos/search-user-module.dto';
+import { UsersModuleService } from './users-module.service';
 
 /* controllers: findAll, findOne, createMany, createOne,
 updateMany, updateOne, removeMany, removeOne, search, filter */
@@ -82,9 +90,14 @@ export class UsersModuleApiController {
   }
 
   @Post(API_ROUTES.USERS.API.CREATE_MANY.ROUTE)
-  async createMany(@Body() createManyUserModuleDto: CreateOneUserModuleDto[]) {
+  async createMany(
+    @Body(new ParseArrayPipe({ items: CreateOneUserModuleDto }))
+    createManyUserModuleDto: CreateManyUsersModuleDto[],
+  ) {
+    const createManyUserModulePlainObjects: CreateOneUserModuleDto[] | any =
+      createManyUserModuleDto.map(item => instanceToPlain(item));
     const serviceOutput = await this.usersModuleService.createMany(
-      createManyUserModuleDto,
+      createManyUserModulePlainObjects,
     );
     const serializeOutput =
       await this.userCollectionSerialize.serialize(serviceOutput);
@@ -120,7 +133,9 @@ export class UsersModuleApiController {
   }
 
   @Patch(API_ROUTES.USERS.API.UPDATE_MANY.ROUTE)
-  async updateMany(@Body() updateManyUserModuleDto: UpdateUserModuleDto[]) {
+  async updateMany(
+    @Body() updateManyUserModuleDto: UpdateManyUsersModuleDto[],
+  ) {
     const serviceOutput = await this.usersModuleService.updateMany(
       updateManyUserModuleDto,
     );

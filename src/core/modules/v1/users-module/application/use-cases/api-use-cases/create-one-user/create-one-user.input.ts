@@ -1,22 +1,25 @@
-import { User } from '@prisma/client';
+import { User, UserRole, UserStatus } from '@prisma/client';
 import {
-  IsDate,
   IsEmail,
+  IsEnum,
   IsNotEmpty,
   IsOptional,
   IsString,
+  MaxLength,
+  MinLength,
   validateSync,
+  ValidationError,
 } from 'class-validator';
 
 export interface CreateOneUserInputProps
-  extends Omit<User, 'role' | 'status'> {}
+  extends Omit<User, 'created_at' | 'updated_at'> {}
 
 export class CreateOneUserInput {
+  @IsEmail()
+  @MaxLength(320)
+  @MinLength(5)
   @IsString()
   @IsNotEmpty()
-  id: string;
-
-  @IsEmail()
   email: string;
 
   @IsString()
@@ -35,24 +38,28 @@ export class CreateOneUserInput {
   @IsString()
   last_name: string | null;
 
+  @MaxLength(30)
+  @MinLength(8)
   @IsString()
   @IsNotEmpty()
   password: string;
 
-  @IsDate()
-  created_at: Date;
+  @IsEnum(UserRole)
+  @IsOptional()
+  role: UserRole = UserRole.CLIENT;
 
-  @IsDate()
-  updated_at: Date;
+  @IsEnum(UserStatus)
+  @IsOptional()
+  status: UserStatus = UserStatus.ACTIVE;
+
   constructor(props: CreateOneUserInputProps) {
-    if (props) {
-      Object.assign(this, props);
-    }
+    if (!props) return;
+    Object.assign(this, props);
   }
 }
 
 export class ValidateCreateOneUserInput {
-  static validate(input: CreateOneUserInput) {
+  static validate(input: Partial<CreateOneUserInput>): ValidationError[] {
     return validateSync(input);
   }
 }

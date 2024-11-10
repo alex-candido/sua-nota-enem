@@ -1,0 +1,66 @@
+###
+GET http://localhost:3333/v1/api/users/find_all
+
+###
+GET http://localhost:3333/v1/api/users/find_one/1
+
+###
+POST http://localhost:3333/v1/api/users/create_many
+Content-Type: application/json
+
+[
+  {
+    "email": "usuarioexemplo@dominio.com",
+    "username": "usuario_exemplo",
+    "full_name": "Usuário Exemplo",
+    "first_name": "Usuário",
+    "last_name": "Exemplo",
+    "password": "senha123",
+    "role": "CLIENT",
+    "status": "ACTIVE"
+  },
+  {
+    "email": "usuarioexemplo2@dominio.com",
+    "username": "usuario_exemplo2",
+    "full_name": "Usuário Exemplo 2",
+    "first_name": "Usuário 2",
+    "last_name": "Exemplo 2",
+    "password": "senha123",
+    "role": "CLIENT",
+    "status": "ACTIVE"
+  }
+]
+
+
+###
+POST http://localhost:3333/v1/api/users/create_one
+Content-Type: application/json
+
+{
+  "email": "usuarioexemplo@dominio.com",
+  "username": "usuario_exemplo",
+  "full_name": "Usuário Exemplo",
+  "first_name": "Usuário",
+  "last_name": "Exemplo",
+  "password": "senha123",
+  "role": "CLIENT",
+  "status": "ACTIVE"
+}
+
+###
+PATCH http://localhost:3333/v1/api/users/update_many
+
+###
+PATCH http://localhost:3333/v1/api/users/update_one/1
+
+###
+DELETE http://localhost:3333/v1/api/users/remove_many
+
+###
+DELETE http://localhost:3333/v1/api/users/remove_one/1
+
+###
+GET http://localhost:3333/v1/api/users/filter
+
+###
+GET http://localhost:3333/v1/api/users/search

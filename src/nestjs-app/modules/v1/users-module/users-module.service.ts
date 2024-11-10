@@ -1,13 +1,19 @@
 import { Inject, Injectable } from '@nestjs/common';
 
-import { CreateManyUsersModuleDto } from './dtos/create-many-users-module.dto';
-import { CreateOneUserModuleDto } from './dtos/create-one-user-module.dto';
-import { FilterUserModuleDto } from './dtos/filter-user-module.dto';
-import { FindAllUserModuleDto } from './dtos/find-all-user-module.dto';
-import { FindOneUserModuleDto } from './dtos/find-one-user-module.dto';
-import { RemoveOneUserModuleDto } from './dtos/remove-one-user-module.dto';
-import { SearchUserModuleDto } from './dtos/search-user-module.dto';
-import { UpdateUserModuleDto } from './dtos/update-one-user-module.dto';
+import {
+  CreateManyUsersModuleDto,
+  FilterUserModuleDto,
+  FindAllUserModuleDto,
+  SearchUserModuleDto,
+  UpdateManyUsersModuleDto,
+} from './dtos/user-collection.dto';
+import {
+  CreateOneUserModuleDto,
+  FindOneUserModuleDto,
+  RemoveManyUserModuleDto,
+  RemoveOneUserModuleDto,
+  UpdateUserModuleDto,
+} from './dtos/user.dto';
 
 import {
   CreateManyUsersUseCase,
@@ -21,7 +27,6 @@ import {
   UpdateManyUsersUseCase,
   UpdateOneUserUseCase,
 } from '../../../../core/modules/v1/users-module/application/use-cases/api-use-cases';
-import { RemoveManyUserModuleDto } from './dtos/remove-many-user-module.dto';
 
 /* services: findAll, findOne, createMany, createOne,
 updateMany, updateOne, removeMany, removeOne, search, filter */
@@ -66,15 +71,15 @@ export class UsersModuleService {
     return await this.findOneUseCase.execute(findOneUserModuleDto);
   }
 
-  async createMany(createManyUsersModuleDto: CreateManyUsersModuleDto[]) {
-    return await this.createManyUseCase.execute(createManyUsersModuleDto);
+  async createMany(createManyUserModuleDto: CreateManyUsersModuleDto[]) {
+    return await this.createManyUseCase.execute(createManyUserModuleDto);
   }
 
   async createOne(createUserModuleDto: CreateOneUserModuleDto) {
     return await this.createOneUseCase.execute(createUserModuleDto);
   }
 
-  async updateMany(updateManyUserModuleDto: UpdateUserModuleDto[]) {
+  async updateMany(updateManyUserModuleDto: UpdateManyUsersModuleDto[]) {
     return await this.updateManyUseCase.execute(updateManyUserModuleDto);
   }
 

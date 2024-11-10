@@ -1,11 +1,8 @@
 @layer base {
-  .layout-admin {
-    /* @apply flex bg-body h-screen; */
+  html {
+    @apply min-h-screen;
   }
-  .layout-admin-container {
-    /* @apply flex flex-col h-full w-full; */
-  }
-  .layout-admin-main {
-    /* @apply flex-1; */
+  .section {
+    @apply w-full pl-[16.2rem];
   }
 }

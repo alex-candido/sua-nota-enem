@@ -1,0 +1,87 @@
+.layout-admin-navbar
+  header.navbar(class='')
+    nav.px-4.flex.basis-full.items-center.w-full.mx-auto(class='sm:px-6')
+      .me-5(class='lg:me-0 lg:hidden')
+        // Logo
+        a.flex.gap-1.rounded-md.text-xl.inline-block.font-semibold(class='focus:outline-none focus:opacity-80' href='#' aria-label='Preline')
+          .icon.block.md-hidden.fill-black(class="pb-[2px]")
+            object(type='image/svg+xml' data='/public/uploads/svg/nestjs-logo.svg')
+          .label.font-serif.text-black(class='dark:text-white')
+            span Admin
+          // End Logo
+      .w-full.flex.items-center.justify-end.ms-auto.gap-x-1(class='md:justify-between md:gap-x-3')
+        .hidden(class='md:block')
+          // Search Input
+          .relative
+            .absolute.inset-y-0.start-0.flex.items-center.pointer-events-none.z-20(class='ps-3.5')
+              svg.shrink-0.size-4.text-gray-400(class='dark:text-white/60' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+                circle(cx='11' cy='11' r='8')
+                path(d='m21 21-4.3-4.3')
+            input.py-2.ps-10.pe-16.block.w-full.bg-white.border-gray-200.rounded-lg.text-sm(type='text' class='focus:outline-none focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder:text-neutral-400 dark:focus:ring-neutral-600' placeholder='Search')
+            .hidden.absolute.inset-y-0.end-0.flex.items-center.pointer-events-none.z-20.pe-1
+              button.inline-flex.shrink-0.justify-center.items-center.size-6.rounded-full.text-gray-500(type='button' class='hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-neutral-500 dark:hover:text-blue-500 dark:focus:text-blue-500' aria-label='Close')
+                span.sr-only Close
+                svg.shrink-0.size-4(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+                  circle(cx='12' cy='12' r='10')
+                  path(d='m15 9-6 6')
+                  path(d='m9 9 6 6')
+            .absolute.inset-y-0.end-0.flex.items-center.pointer-events-none.z-20.pe-3.text-gray-400
+              svg.shrink-0.size-3.text-gray-400(class='dark:text-white/60' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+                path(d='M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3')
+              span.mx-1
+                svg.shrink-0.size-3.text-gray-400(class='dark:text-white/60' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+                  path(d='M5 12h14')
+                  path(d='M12 5v14')
+              span.text-xs /
+          // End Search Input
+        .flex.flex-row.items-center.justify-end.gap-1
+          button.relative.inline-flex.justify-center.items-center.gap-x-2.text-sm.font-semibold.rounded-full.border.border-transparent.text-gray-800(type='button' class='md:hidden size-[38px] hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700')
+            i.fa-solid.fa-magnifying-glass
+            span.sr-only Search
+          button.moon-mode.hs-dark-mode.inline-flex.items-center.gap-x-2.py-2.px-3.rounded-full.text-sm.text-gray-800(type='button' class='hs-dark-mode-active:hidden bg-white hover:bg-gray-100 border shadow-sm rounded-x focus:outline-none focus:bg-white/20 ' data-hs-theme-click-value='dark')
+            i.fa-solid.fa-moon
+            |   Dark
+          button.sun-mode.hs-dark-mode.hidden.items-center.gap-x-2.py-2.px-3.rounded-full.text-sm.text-white(type='button' class='hs-dark-mode-active:inline-flex border shadow-sm rounded-x dark:bg-neutral-800 dark:border-neutral-700 hover:bg-white/20 focus:outline-none focus:bg-white/20 dark:hover:bg-neutral-700' data-hs-theme-click-value='light')
+            i.fa-solid.fa-sun
+            |   Light
+            button.relative.inline-flex.justify-center.items-center.gap-x-2.text-sm.font-semibold.rounded-full.border.border-transparent.text-gray-800(type='button' class='size-[38px] hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700')
+              i.fa-solid.fa-bell
+              span.sr-only Notifications
+          button.relative.inline-flex.justify-center.items-center.gap-x-2.text-sm.font-semibold.rounded-full.border.border-transparent.text-gray-800(type='button' class='size-[38px] hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700')
+            i.fa-solid.fa-bolt
+            span.sr-only Activity
+          // Dropdown
+          .hs-dropdown.relative.inline-flex.open(class='[--placement:bottom-right]')
+              button#hs-dropdown-account.inline-flex.justify-center.items-center.gap-x-2.text-sm.font-semibold.rounded-full.border.border-transparent.text-gray-800(type='button' class='size-[38px] focus:outline-none disabled:opacity-50 disabled:pointer-events-none dark:text-white' aria-haspopup='menu' aria-expanded='true' aria-label='Dropdown')
+                img.shrink-0.rounded-full(class='size-[38px]' src='https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80' alt='Avatar')
+              .hs-dropdown-menu.duration.opacity-0.min-w-60.bg-white.shadow-md.rounded-lg.mt-2.block(class='transition-[opacity,margin] hs-dropdown-open:opacity-100 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700 after:h-4 after:absolute after:-bottom-4 after:start-0 after:w-full before:h-4 before:absolute before:-top-4 before:start-0 before:w-full' role='menu' aria-orientation='vertical' aria-labelledby='hs-dropdown-account' style='position: fixed; inset: 0px 0px auto auto; margin: 0px; transform: translate(-24px, 58px);' data-popper-placement='bottom-end')
+                .py-3.px-5.bg-gray-100.rounded-t-lg(class='dark:bg-neutral-700')
+                  p.text-sm.text-gray-500(class='dark:text-neutral-500') Signed in as
+                  p.text-sm.font-medium.text-gray-800(class='dark:text-neutral-200') james@site.com
+                .any(class='p-1.5 space-y-0.5')
+                  a.flex.items-center.py-2.px-3.rounded-lg.text-sm.text-gray-800(class='gap-x-3.5 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300' href='#')
+                    svg.shrink-0.size-4(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+                      path(d='M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9')
+                      path(d='M10.3 21a1.94 1.94 0 0 0 3.4 0')
+                    |                   Newsletter
+                  a.flex.items-center.py-2.px-3.rounded-lg.text-sm.text-gray-800(class='gap-x-3.5 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300' href='#')
+                    svg.shrink-0.size-4(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+                      path(d='M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z')
+                      path(d='M3 6h18')
+                      path(d='M16 10a4 4 0 0 1-8 0')
+                    |                   Purchases
+                  a.flex.items-center.py-2.px-3.rounded-lg.text-sm.text-gray-800(class='gap-x-3.5 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300' href='#')
+                    svg.shrink-0.size-4(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+                      path(d='M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242')
+                      path(d='M12 12v9')
+                      path(d='m8 17 4 4 4-4')
+                    |                   Downloads
+                  a.flex.items-center.py-2.px-3.rounded-lg.text-sm.text-gray-800(class='gap-x-3.5 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300' href='#')
+                    svg.shrink-0.size-4(xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+                      path(d='M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2')
+                      circle(cx='9' cy='7' r='4')
+                      path(d='M22 21v-2a4 4 0 0 0-3-3.87')
+                      path(d='M16 3.13a4 4 0 0 1 0 7.75')
+                    |                   Team Account
+
+

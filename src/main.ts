@@ -4,6 +4,7 @@ import { Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { NestFastifyApplication } from '@nestjs/platform-fastify';
+import { useContainer } from 'class-validator';
 
 import { applyGlobalConfig } from './app-global-config';
 import { isMainProcess } from './nestjs-app/@share/config/global/env.config';
@@ -27,6 +28,7 @@ async function bootstrap() {
 
   const port: string = configService.get<string>('APP_PORT')!;
 
+  useContainer(app.select(AppModule), { fallbackOnErrors: true });
   applyGlobalConfig(app, configService);
 
   await app.listen(port, '0.0.0.0', async () => {

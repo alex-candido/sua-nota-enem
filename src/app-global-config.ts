@@ -3,6 +3,7 @@ import { join, resolve } from 'path';
 import { ConfigService } from '@nestjs/config';
 import { NestFastifyApplication } from '@nestjs/platform-fastify';
 
+import { ValidationPipe } from '@nestjs/common';
 import { CONFIG_ENVS_SCHEMA_TYPE } from './nestjs-app/@share/__types__/envs';
 
 export function applyGlobalConfig(
@@ -17,6 +18,13 @@ export function applyGlobalConfig(
 
   // [cors] https://docs.nestjs.com/security/cors
   // app.enableCors({ origin, credentials: true });
+
+  // [validation] https://docs.nestjs.com/techniques/validation
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+    }),
+  );
 
   // [global-prefix] https://docs.nestjs.com/faq/global-prefix
   app.setGlobalPrefix(globalPrefix);
