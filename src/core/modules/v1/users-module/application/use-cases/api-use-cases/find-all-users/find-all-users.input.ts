@@ -20,23 +20,23 @@ export enum SortDirection {
 }
 
 export class FindAllUsersInput {
-  @IsOptional() // Este campo é opcional
-  @IsInt() // Verifica se é um inteiro
-  @IsPositive() // Verifica se o número é positivo
+  @IsOptional()
+  @IsInt()
+  @IsPositive()
   page?: number;
 
-  @IsOptional() // Este campo é opcional
-  @IsInt() // Verifica se é um inteiro
-  @IsPositive() // Verifica se o número é positivo
+  @IsOptional()
+  @IsInt()
+  @IsPositive()
   per_page?: number;
 
-  @IsOptional() // Este campo é opcional
-  @IsString() // Verifica se é uma string
+  @IsOptional()
+  @IsString()
   sort?: string | null;
 
-  @IsOptional() // Este campo é opcional
-  @IsString() // Verifica se é uma string
-  @IsEnum(SortDirection) // Verifica se é uma das direções de ordenação definidas no enum
+  @IsOptional()
+  @IsString()
+  @IsEnum(SortDirection)
   sort_dir?: SortDirection | null;
 
   constructor(props: FindAllUsersInputProps) {

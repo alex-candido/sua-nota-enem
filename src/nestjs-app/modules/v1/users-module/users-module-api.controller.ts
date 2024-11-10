@@ -116,8 +116,10 @@ export class UsersModuleApiController {
 
   @Post(API_ROUTES.USERS.API.CREATE_ONE.ROUTE)
   async createOne(@Body() createOneUserModuleDto: CreateOneUserModuleDto) {
+    const createOneUserModulePlainObjects: CreateOneUserModuleDto | any =
+      instanceToPlain(createOneUserModuleDto);
     const serviceOutput = await this.usersModuleService.createOne(
-      createOneUserModuleDto,
+      createOneUserModulePlainObjects,
     );
     const serializeOutput = await this.userSerialize.serialize(serviceOutput);
     const userPresenter = await this.userPresenter.presenter(serializeOutput);

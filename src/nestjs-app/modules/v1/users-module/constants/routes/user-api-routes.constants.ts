@@ -9,10 +9,6 @@ export const API_ROUTES = {
       VERSION: '1',
     },
     API: {
-      FIND_ALL: {
-        ROUTE: '/find_all',
-        METHOD: 'GET',
-      },
       FIND_ONE: {
         ROUTE: '/find_one/:id',
         METHOD: 'GET',
@@ -40,6 +36,16 @@ export const API_ROUTES = {
       REMOVE_ONE: {
         ROUTE: '/remove_one/:id',
         METHOD: 'DELETE',
+      },
+      FIND_ALL: {
+        ROUTE: '/find_all',
+        METHOD: 'GET',
+        QUERY: {
+          page: '',
+          per_page: '',
+          sort: '',
+          sort_dir: '',
+        },
       },
       SEARCH: {
         ROUTE: '/search',

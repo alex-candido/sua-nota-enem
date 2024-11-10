@@ -1,10 +1,13 @@
 import { PrismaService } from '../../../../../../../../nestjs-app/@share/database/prisma/implementations/prisma.service';
 
+import { User } from '../../../../domain/entities/user';
+import { UserModelMapper } from '../mappers/user-model.mapper';
+
 /* repository: findAll, findOne, createMany, createOne,
 updateMany, updateOne, removeMany, removeOne, search, filter */
 
 export class UserPrismaRepository {
-  constructor(private _prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) {}
 
   async findAll(): Promise<any> {
     return {};
@@ -14,12 +17,24 @@ export class UserPrismaRepository {
     return {};
   }
 
-  async createMany(): Promise<any> {
-    return {};
+  async createMany(entities: User[]): Promise<void> {
+    const modelsProps = entities.map(entity => UserModelMapper.toModel(entity));
+
+    await this.prisma.user.createMany({
+      data: modelsProps,
+    });
   }
 
-  async createOne(): Promise<any> {
-    return {};
+  async createOne(entity: User): Promise<User> {
+    const modelProps = UserModelMapper.toModel(entity);
+
+    const user = await this.prisma.user.create({
+      data: {
+        ...modelProps,
+      },
+    });
+
+    return UserModelMapper.toEntity(user);
   }
 
   async updateMany(): Promise<any> {

@@ -28,6 +28,7 @@
     "prisma:generate": "dotenv -e ./envs/.env -- prisma generate --schema ./prisma/schema.prisma",
     "prisma:push": "dotenv -e ./envs/.env -- prisma db push --schema ./prisma/schema.prisma",
     "prisma:migrate": "dotenv -e ./envs/.env -- prisma migrate dev --schema ./prisma/schema.prisma",
+    "prisma:deploy": "dotenv -e ./envs/.env -- prisma migrate deploy --schema ./prisma/schema.prisma",
     "prisma:studio": "dotenv -e ./envs/.env -- prisma studio --schema ./prisma/schema.prisma",
     "tailwind:watch": "postcss assets/stylesheets/application.tailwind.css -o public/css/tailwind-main.css --watch",
     "tailwind:build": "postcss assets/stylesheets/application.tailwind.css -o public/css/tailwind-main.css",
@@ -97,6 +98,7 @@
     "sass": "^1.79.4",
     "tailwindcss": "^3.4.13",
     "uglify-js": "^3.19.3",
+    "uuid": "^11.0.2",
     "vercel": "^37.11.0"
   },
   "devDependencies": {

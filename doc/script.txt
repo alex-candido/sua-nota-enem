@@ -7,3 +7,4 @@ npx tailwindcss -i ./assets/tailwind.css -o ./public/main.css
 "build:js": "uglifyjs public/js/main.js -o public/js/main.min.js -c -m"
 netstat -ano | findstr :3333
 taskkill /PID 2124 /F
+prisma migrate dev --name init

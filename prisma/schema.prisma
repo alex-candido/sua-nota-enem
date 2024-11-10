@@ -34,9 +34,9 @@ model User {
   last_name  String? @db.VarChar(100)
   password   String  @db.VarChar(255)
 
-  role   UserRole   @default(CLIENT)
-  status UserStatus @default(ACTIVE)
+  role   UserRole?   @default(CLIENT)
+  status UserStatus? @default(ACTIVE)
 
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  created_at DateTime? @default(now())
+  updated_at DateTime? @updatedAt
 }

@@ -1,5 +1,5 @@
 ###
-GET http://localhost:3333/v1/api/users/find_all
+GET http://localhost:3333/v1/api/users/find_all?page=1&per_page=5&sort="name"&sort_dir="asc"
 
 ###
 GET http://localhost:3333/v1/api/users/find_one/1
@@ -37,8 +37,8 @@ POST http://localhost:3333/v1/api/users/create_one
 Content-Type: application/json
 
 {
-  "email": "usuarioexemplo@dominio.com",
-  "username": "usuario_exemplo",
+  "email": "usuarioexemplo2@dominio.com",
+  "username": "usuario_exemplo2",
   "full_name": "Usuário Exemplo",
   "first_name": "Usuário",
   "last_name": "Exemplo",
