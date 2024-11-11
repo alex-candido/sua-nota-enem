@@ -1,5 +1,5 @@
 ###
-GET http://localhost:3333/v1/api/users/find_all?page=1&per_page=5&sort="name"&sort_dir="asc"
+GET http://localhost:3333/v1/api/users/find_all?page=1&per_page=5&sort=username&sort_dir=asc
 
 ###
 GET http://localhost:3333/v1/api/users/find_one/1
@@ -31,17 +31,16 @@ Content-Type: application/json
   }
 ]
 
-
 ###
 POST http://localhost:3333/v1/api/users/create_one
 Content-Type: application/json
 
 {
-  "email": "usuarioexemplo2@dominio.com",
-  "username": "usuario_exemplo2",
-  "full_name": "Usuário Exemplo",
-  "first_name": "Usuário",
-  "last_name": "Exemplo",
+  "email": "alex.candido@mail.com",
+  "username": "alexcndd",
+  "full_name": "Alex Candido",
+  "first_name": "Alex",
+  "last_name": "Candido",
   "password": "senha123",
   "role": "CLIENT",
   "status": "ACTIVE"
@@ -60,7 +59,7 @@ DELETE http://localhost:3333/v1/api/users/remove_many
 DELETE http://localhost:3333/v1/api/users/remove_one/1
 
 ###
-GET http://localhost:3333/v1/api/users/filter
+GET http://localhost:3333/v1/api/users/filter?filters={"key":"first_name","relation":"contains","values":["alex"],"mode": "insensitive", "operator": "contains"}&filters={"key":"last_name","relation":"contains","values":["candido"],"mode": "insensitive", "operator": "contains"}&page=1&per_page=5&sort="name"&sort_dir=asc
 
 ###
-GET http://localhost:3333/v1/api/users/search
+GET http://localhost:3333/v1/api/users/search?filter={"key":"first_name","value":"alex","mode": "insensitive", "operator": "contains"}&page=1&per_page=5&sort=username&sort_dir=asc

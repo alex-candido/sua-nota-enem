@@ -1,10 +1,10 @@
 import { IPaginationOutput } from '../../../../../../core/@seedwork/application/interfaces/pagination-output.interface';
-import { SearchResult } from '../../../../../../core/@seedwork/domain/repository/search-result';
+import { ListResult } from '../../../../../../core/@seedwork/domain/repository/list-result';
 
 export class PaginationOutput {
   static toOutput<Item = any>(
     items: Item[],
-    props: Omit<SearchResult, 'items'>,
+    props: Omit<ListResult, 'items'>,
   ): IPaginationOutput<Item> {
     return {
       items,

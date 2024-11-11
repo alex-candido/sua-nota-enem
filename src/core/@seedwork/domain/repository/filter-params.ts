@@ -1,5 +1,4 @@
-import { Type } from 'class-transformer';
-import { IsArray, IsOptional, IsString } from 'class-validator';
+import { IsArray, IsIn, IsOptional, IsString } from 'class-validator';
 import ValueObject from '../value-objects/value-object';
 
 export type ModeDirection = 'default' | 'insensitive';
@@ -12,6 +11,20 @@ export type OperatorsType =
   | 'lte'
   | 'gt'
   | 'gte';
+
+const VALID_RELATIONS = ['equals', 'contains', 'in', 'notIn'];
+const VALID_MODES = ['default', 'insensitive'];
+
+const VALID_OPERATORS: OperatorsType[] = [
+  'contains',
+  'equals',
+  'startsWith',
+  'endsWith',
+  'lt',
+  'lte',
+  'gt',
+  'gte',
+];
 
 export type FilterParamsConstructorProps<Key = string> = {
   key?: Key | null;
@@ -27,20 +40,19 @@ export class FilterParams<Key = string> extends ValueObject {
   protected _key: Key | null;
 
   @IsString()
-  @IsOptional()
+  @IsIn(VALID_RELATIONS)
   protected _relation: string | null;
 
   @IsArray()
-  @Type(() => Array)
-  @IsOptional()
+  @IsString({ each: true })
   protected _values: string[] | null;
 
   @IsString()
-  @IsOptional()
+  @IsIn(VALID_MODES)
   protected _mode: ModeDirection | null;
 
   @IsString()
-  @IsOptional()
+  @IsIn(VALID_OPERATORS)
   protected _operator: OperatorsType | null;
 
   constructor(props: FilterParamsConstructorProps<Key> = {}) {

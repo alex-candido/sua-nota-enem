@@ -1,19 +1,21 @@
 import {
-  IsIn,
-  IsNotEmpty,
+  IsEnum,
   IsNumber,
   IsOptional,
   IsString,
   validateSync,
 } from 'class-validator';
+import { UserFilterParamsProps } from '../filter-users/filter-user.input';
+import { Type } from 'class-transformer';
+import { FilterParams } from '../../../../../../../../core/@seedwork/domain/repository/filter-params';
 
-const VALID_MODES = ['default', 'insensitive'] as const;
+export enum SortDirection {
+  ASC = 'asc',
+  DESC = 'desc',
+}
 
 export interface SearchUsersInputProps {
-  key: string;
-  value: string;
-  mode: (typeof VALID_MODES)[number]; // Define o tipo baseado nos valores válidos
-  operator: 'contains';
+  filter?: UserFilterParamsProps | null;
   page?: number;
   per_page?: number;
   sort?: string | null;
@@ -21,36 +23,26 @@ export interface SearchUsersInputProps {
 }
 
 export class SearchUsersInput {
-  @IsString() // Verifica se é uma string
-  @IsNotEmpty() // Garante que não está vazio
-  key: string;
-
-  @IsString() // Verifica se é uma string
-  @IsNotEmpty() // Garante que não está vazio
-  value: string;
-
-  @IsIn(VALID_MODES) // Verifica se está em VALID_MODES
-  mode: (typeof VALID_MODES)[number];
-
-  @IsString() // Verifica se é uma string
-  @IsNotEmpty() // Garante que não está vazio
-  operator: 'contains';
-
-  @IsOptional() // Este campo é opcional
-  @IsNumber() // Verifica se é um número
+  @IsOptional()
+  @IsNumber()
+  @Type(() => Number)
   page?: number;
 
-  @IsOptional() // Este campo é opcional
-  @IsNumber() // Verifica se é um número
+  @IsOptional()
+  @IsNumber()
+  @Type(() => Number)
   per_page?: number;
 
-  @IsOptional() // Este campo é opcional
-  @IsString() // Verifica se é uma string
+  @IsOptional()
+  @IsString()
   sort?: string | null;
 
-  @IsOptional() // Este campo é opcional
-  @IsString() // Verifica se é uma string
-  sort_dir?: string | null;
+  @IsOptional()
+  @IsString()
+  @IsEnum(SortDirection)
+  sort_dir?: SortDirection | null;
+
+  filter: FilterParams | null;
 
   constructor(props: SearchUsersInputProps) {
     if (props) {

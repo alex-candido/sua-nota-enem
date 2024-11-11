@@ -51,10 +51,12 @@ export const API_ROUTES = {
         ROUTE: '/search',
         METHOD: 'GET',
         QUERY: {
-          key: '',
-          value: '',
-          mode: '',
-          operator: '',
+          filter: {
+            key: '',
+            value: '',
+            mode: '',
+            operator: '',
+          },
           page: '',
           per_page: '',
           sort: '',

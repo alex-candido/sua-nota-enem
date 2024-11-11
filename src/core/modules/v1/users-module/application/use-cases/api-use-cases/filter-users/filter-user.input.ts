@@ -1,43 +1,18 @@
-import { Type } from 'class-transformer';
+import { Transform, Type } from 'class-transformer';
 import {
   IsArray,
   IsEnum,
-  IsIn,
-  IsNotEmpty,
   IsNumber,
   IsOptional,
   IsString,
   ValidateNested,
   validateSync,
 } from 'class-validator';
-
-// Definindo as possíveis relações e modos válidos
-const VALID_RELATIONS = ['equals', 'contains', 'in', 'notIn'];
-const VALID_MODES = ['default', 'insensitive'];
-
-// Atualizando os operadores válidos
-export type OperatorsType =
-  | 'contains'
-  | 'equals'
-  | 'startsWith'
-  | 'endsWith'
-  | 'lt'
-  | 'lte'
-  | 'gt'
-  | 'gte';
-
-const VALID_OPERATORS: OperatorsType[] = [
-  'contains',
-  'equals',
-  'startsWith',
-  'endsWith',
-  'lt',
-  'lte',
-  'gt',
-  'gte',
-];
-
-export type ModeDirection = 'default' | 'insensitive';
+import {
+  FilterParams,
+  OperatorsType,
+} from '../../../../../../../../core/@seedwork/domain/repository/filter-params';
+import { UserFilterParams } from '../../../../domain/repository/user.repository';
 
 // Interface para os filtros de usuários
 export interface UserFilterParamsProps {
@@ -62,34 +37,7 @@ export enum SortDirection {
   DESC = 'desc',
 }
 
-export class UserFilterParams {
-  @IsString()
-  @IsNotEmpty()
-  key: string;
-
-  @IsString()
-  @IsIn(VALID_RELATIONS)
-  relation: string;
-
-  @IsArray()
-  @IsString({ each: true })
-  values: string[];
-
-  @IsString()
-  @IsIn(VALID_MODES)
-  mode: string;
-
-  @IsString()
-  @IsIn(VALID_OPERATORS)
-  operator: OperatorsType;
-}
-
 export class FilterUsersInput {
-  @IsOptional()
-  @ValidateNested({ each: true })
-  @Type(() => UserFilterParams)
-  filters?: UserFilterParams[] | null;
-
   @IsOptional()
   @IsNumber()
   @Type(() => Number)
@@ -104,12 +52,23 @@ export class FilterUsersInput {
   @IsString()
   sort?: string | null;
 
-  @IsOptional() // Este campo é opcional
-  @IsString() // Verifica se é uma string
-  @IsEnum(SortDirection) // Verifica se é uma das direções de ordenação definidas no enum
+  @IsOptional()
+  @IsString()
+  @IsEnum(SortDirection)
   sort_dir?: SortDirection | null;
 
-  constructor(props: FilterUsersInputProps[]) {
+  @IsOptional()
+  @Transform(({ value }) => {
+    return !Array.isArray(value)
+      ? (value = [JSON.parse(value)])
+      : (value = value.map(obj => JSON.parse(obj)));
+  })
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => UserFilterParams)
+  filters?: FilterParams[] | null;
+
+  constructor(props: FilterUsersInputProps) {
     if (props) {
       Object.assign(this, props);
     }

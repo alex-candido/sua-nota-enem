@@ -7,7 +7,6 @@ export class CreateManyUsersUseCase {
 
   async execute(input: CreateManyUsersInput[]): Promise<void> {
     const users = input.map(userInput => User.create(userInput));
-
     await this.userRepo.createMany(users);
   }
 }

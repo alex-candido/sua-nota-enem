@@ -9,8 +9,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_POSTGRESS_URL")
+  provider = "mongodb"
+  url      = env("DATABASE_MONGODB_URL")
 }
 
 enum UserRole {
@@ -27,12 +27,12 @@ enum UserStatus {
 model User {
   id String @id @default(uuid()) @map("_id")
 
-  email      String  @unique @db.VarChar(150)
-  username   String  @unique @db.VarChar(50)
-  full_name  String? @db.VarChar(100)
-  first_name String? @db.VarChar(100)
-  last_name  String? @db.VarChar(100)
-  password   String  @db.VarChar(255)
+  email      String  @unique
+  username   String  @unique
+  full_name  String?
+  first_name String?
+  last_name  String?
+  password   String
 
   role   UserRole?   @default(CLIENT)
   status UserStatus? @default(ACTIVE)

@@ -1,3 +1,4 @@
+import { Type } from 'class-transformer';
 import {
   IsEnum,
   IsInt,
@@ -23,11 +24,13 @@ export class FindAllUsersInput {
   @IsOptional()
   @IsInt()
   @IsPositive()
+  @Type(() => Number)
   page?: number;
 
   @IsOptional()
   @IsInt()
   @IsPositive()
+  @Type(() => Number)
   per_page?: number;
 
   @IsOptional()

@@ -12,9 +12,7 @@ export class CreateOneUserUseCase
 
   async execute(input: CreateOneUserInput): Promise<CreateUserOutput> {
     const entity = User.create(input);
-
     const user = await this.userRepo.createOne(entity);
-
     return UserOutput.toOutput(user as User);
   }
 }

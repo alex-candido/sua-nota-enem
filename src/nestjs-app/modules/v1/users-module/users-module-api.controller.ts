@@ -14,6 +14,7 @@ import {
 
 import {
   CreateManyUsersModuleDto,
+  FiltersUserModuleDto,
   FilterUserModuleDto,
   FindAllUserModuleDto,
   SearchUserModuleDto,
@@ -203,7 +204,10 @@ export class UsersModuleApiController {
   }
 
   @Get(API_ROUTES.USERS.API.FILTER.ROUTE)
-  async filter(@Query() filterUserModuleDto: FilterUserModuleDto) {
+  async filter(
+    @Query() filterUserModuleDto: FilterUserModuleDto,
+    _filtersUserModuleDto?: FiltersUserModuleDto[],
+  ) {
     const serviceOutput =
       await this.usersModuleService.filter(filterUserModuleDto);
     const serializeOutput =
