@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { ConfigModule } from './@share/config/@config.module';
-import { RouterModule } from './router/router.module';
+import { RouterModule } from './routes/router.module';
 import { PrismaModule } from './@share/database/prisma/prisma.module';
 
 @Module({
