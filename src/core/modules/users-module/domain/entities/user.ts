@@ -54,12 +54,20 @@ export class User extends AggregateRoot<
     this.props.email = value;
   }
 
+  public changeEmail(value: string) {
+    this.email = value;
+  }
+
   get username(): string {
     return this.props.username;
   }
 
   set username(value: string) {
     this.props.username = value;
+  }
+
+  public changeUsername(value: string) {
+    this.username = value;
   }
 
   get full_name(): string {
@@ -70,12 +78,20 @@ export class User extends AggregateRoot<
     this.props.full_name = value;
   }
 
+  public changeFullName(value: string) {
+    this.full_name = value;
+  }
+
   get first_name(): string {
     return this.props.first_name;
   }
 
   set first_name(value: string) {
     this.props.first_name = value;
+  }
+
+  public changeFirstName(value: string) {
+    this.first_name = value;
   }
 
   get last_name(): string {
@@ -86,12 +102,20 @@ export class User extends AggregateRoot<
     this.props.last_name = value;
   }
 
+  public changeLastName(value: string) {
+    this.last_name = value;
+  }
+
   get password(): string {
     return this.props.password;
   }
 
   set password(value: string) {
     this.props.password = value;
+  }
+
+  public changePassword(value: string) {
+    this.password = value;
   }
 
   get role(): $Enums.UserRole | null {
@@ -102,12 +126,20 @@ export class User extends AggregateRoot<
     this.props.role = value;
   }
 
+  public changeRole(value: $Enums.UserRole | null) {
+    this.role = value;
+  }
+
   get status(): $Enums.UserStatus | null {
     return this.props.status;
   }
 
   set status(value: $Enums.UserStatus | null) {
     this.props.status = value;
+  }
+
+  public changeStatus(value: $Enums.UserStatus | null) {
+    this.status = value;
   }
 
   get created_at(): Date | null {
@@ -118,12 +150,20 @@ export class User extends AggregateRoot<
     this.props.created_at = value;
   }
 
+  public changeCreatedAt(value: Date | null) {
+    this.created_at = value;
+  }
+
   get updated_at(): Date | null {
     return this.props.updated_at;
   }
 
   set updated_at(value: Date | null) {
     this.props.updated_at = value;
+  }
+
+  public changeUpdatedAt(value: Date | null) {
+    this.updated_at = value;
   }
 
   static create(props: UserCreateCommand): User {

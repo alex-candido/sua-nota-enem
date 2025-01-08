@@ -1,6 +1,6 @@
 import { User } from '@prisma/client';
 import { validateSync } from 'class-validator';
-import { CreateOneUserInput } from './create-one-user.input';
+import { CreateOneUserInput } from '../create-one-user/create-one-user.input';
 
 export interface CreateManyUsersInputProps extends User {}
 

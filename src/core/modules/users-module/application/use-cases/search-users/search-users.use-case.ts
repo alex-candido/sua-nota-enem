@@ -1,14 +1,14 @@
-import IUseCase from '../../../../../core/@seedwork/application/interfaces/use-case.interface';
+import IUseCase from '../../../../../../core/@seedwork/application/interfaces/use-case.interface';
 
 import {
   IUserRepository,
   UserListResult,
   UserSearchParams,
-} from '../../domain/repository/user.repository';
-import { ListUsersOutput } from '../output/list-users.output';
-import { PaginationOutput } from '../output/pagination-output';
-import { UserOutput } from '../output/user.output';
-import { SearchUsersInput } from '../input/search-user.input';
+} from '../../../domain/repository/user.repository';
+import { ListUsersOutput } from '../../output/list-users.output';
+import { PaginationOutput } from '../../output/pagination-output';
+import { UserOutput } from '../../output/user.output';
+import { SearchUsersInput } from '../search-users/search-users.input';
 
 export class SearchUsersUseCase
   implements IUseCase<SearchUsersInput, ListUsersOutput>

@@ -1,46 +1,58 @@
-import { User } from '@prisma/client';
+import { User, UserRole, UserStatus } from '@prisma/client';
 import {
   IsEmail,
-  IsNotEmpty,
+  IsEnum,
   IsOptional,
   IsString,
+  MaxLength,
+  MinLength,
   validateSync,
 } from 'class-validator';
 
-// Interface para as propriedades de entrada de atualização
 export interface UpdateOneUserInputProps
   extends Omit<User, 'role' | 'status'> {}
 
-// Classe que representa a entrada para a atualização de um usuário
 export class UpdateOneUserInput {
   @IsString()
-  @IsNotEmpty()
-  id: string; // ID do usuário a ser atualizado
-
   @IsOptional()
-  @IsString()
-  username?: string; // Nome de usuário opcional
+  id: string;
 
-  @IsOptional()
   @IsEmail()
-  email?: string; // Email opcional
+  @MaxLength(320)
+  @MinLength(5)
+  @IsString()
+  @IsOptional()
+  email: string;
+
+  @IsString()
+  @IsOptional()
+  username: string;
 
   @IsOptional()
   @IsString()
-  full_name?: string | null; // Nome completo opcional
+  full_name: string | null;
 
   @IsOptional()
   @IsString()
-  first_name?: string | null; // Primeiro nome opcional
+  first_name: string | null;
 
   @IsOptional()
   @IsString()
-  last_name?: string | null; // Último nome opcional
+  last_name: string | null;
 
-  @IsOptional()
+  @MaxLength(30)
+  @MinLength(8)
   @IsString()
-  @IsNotEmpty()
-  password?: string; // Senha opcional
+  @IsOptional()
+  password: string;
+
+  @IsEnum(UserRole)
+  @IsOptional()
+  role: UserRole = UserRole.CLIENT;
+
+  @IsEnum(UserStatus)
+  @IsOptional()
+  status: UserStatus = UserStatus.ACTIVE;
 
   constructor(props: UpdateOneUserInputProps) {
     if (props) {
@@ -49,7 +61,6 @@ export class UpdateOneUserInput {
   }
 }
 
-// Classe para validação
 export class ValidateUpdateOneUserInput {
   static validate(input: UpdateOneUserInput) {
     return validateSync(input);

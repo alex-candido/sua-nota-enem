@@ -5,15 +5,15 @@
 GET http://localhost:3333/v1/api/users/find_one/0b63c7fd-d622-4fc0-8ada-14fd1271a36f
 
 ###
-GET http://localhost:3333/v1/api/users/find_all?page=1&per_page=5&sort=username&sort_dir=asc
+GET http://localhost:3333/v1/api/users/find_all?page=1&per_page=2&sort=username&sort_dir=asc
 
 ###
 POST http://localhost:3333/v1/api/users/create_one
 Content-Type: application/json
 
 {
-  "email": "alex.candido2@mail.com",
-  "username": "alexcndd2",
+  "email": "alex.candido10@mail.com",
+  "username": "alexcndd10",
   "full_name": "Alex Candido",
   "first_name": "Alex",
   "last_name": "Candido",
@@ -50,19 +50,11 @@ Content-Type: application/json
 ]
 
 ###
-PATCH http://localhost:3333/v1/api/users/update_one
+PATCH http://localhost:3333/v1/api/users/update_one/0b63c7fd-d622-4fc0-8ada-14fd1271a36f
 Content-Type: application/json
 
 {
-  "id": "0b63c7fd-d622-4fc0-8ada-14fd1271a36f",
-  "email": "alex.candido2@mail.com",
-  "username": "alexcndd2",
-  "full_name": "Alex Candido",
-  "first_name": "Alex",
-  "last_name": "Candido",
-  "password": "senha123",
-  "role": "CLIENT",
-  "status": "ACTIVE"
+  "email": "usuarioexemplo20@dominio.com"
 }
 
 ###
@@ -72,36 +64,11 @@ Content-Type: application/json
 [
   {
     "id": "0b63c7fd-d622-4fc0-8ada-14fd1271a36f",
-    "email": "alex.candido2@mail.com",
-    "username": "alexcndd2",
-    "full_name": "Alex Candido",
-    "first_name": "Alex",
-    "last_name": "Candido",
-    "password": "senha123",
-    "role": "CLIENT",
-    "status": "ACTIVE"
+    "email": "usuarioexemplo10@dominio.com"
   },
   {
-    "id": "0b63c7fd-d622-4fc0-8ada-14fd1271a36f",
-    "email": "alex.candido2@mail.com",
-    "username": "alexcndd2",
-    "full_name": "Alex Candido",
-    "first_name": "Alex",
-    "last_name": "Candido",
-    "password": "senha123",
-    "role": "CLIENT",
-    "status": "ACTIVE"
-  },
-  {
-    "id": "0b63c7fd-d622-4fc0-8ada-14fd1271a36f",
-    "email": "alex.candido2@mail.com",
-    "username": "alexcndd2",
-    "full_name": "Alex Candido",
-    "first_name": "Alex",
-    "last_name": "Candido",
-    "password": "senha123",
-    "role": "CLIENT",
-    "status": "ACTIVE"
+    "id": "da712ae2-0fd3-4098-bd18-36a687aac0d5",
+    "email": "usuarioexemplo11@dominio.com"
   }
 ]
 

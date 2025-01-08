@@ -47,12 +47,40 @@ export class UserPrismaRepository implements IUserRepository {
     });
   }
 
-  async findOne(id: string): Promise<User | null> {
+  async findOne(id: string | UserId): Promise<User | null> {
     const user = await this.prisma.user.findUnique({
-      where: { id },
+      where: {
+        id: String(id),
+      },
     });
 
     return UserModelMapper.toEntity(user);
+  }
+
+  async findById(id: string | UserId): Promise<User | null> {
+    const user = await this.prisma.user.findUnique({
+      where: {
+        id: String(id),
+      },
+    });
+
+    return UserModelMapper.toEntity(user);
+  }
+
+  async findByIds(ids: string[] | UserId[]): Promise<User[] | null> {
+    const _ids = ids.map(id => id.id);
+
+    const users = await this.prisma.user.findMany({
+      where: {
+        id: {
+          in: _ids,
+        },
+      },
+    });
+
+    return users.map(model => {
+      return UserModelMapper.toEntity(model);
+    });
   }
 
   async createMany(entities: User[]): Promise<void> {
@@ -75,26 +103,42 @@ export class UserPrismaRepository implements IUserRepository {
     return UserModelMapper.toEntity(user);
   }
 
-  async updateMany(ids: UserId[], entities: User[]): Promise<void> {
-    const _ids = ids.map(id => id.toString());
+  async updateMany(entities: User[]): Promise<any> {
+    const modelsProps = entities.map(entity => {
+      const model = UserModelMapper.toModel(entity);
+      const { id: _id, ...updateData } = model;
+      return { id: entity.id, updateData };
+    });
 
-    await this.prisma.user.updateMany({
-      where: { id: { in: _ids } },
-      data: {
-        ...entities,
-      },
+    await this.prisma.$transaction(async tx => {
+      await Promise.allSettled(
+        modelsProps.map(modelProps => {
+          return tx.user.update({
+            where: {
+              id: modelProps.id,
+            },
+            data: {
+              ...modelProps.updateData,
+            },
+          });
+        }),
+      );
     });
   }
 
-  async updateOne(id: UserId, data: User): Promise<User> {
-    const _id = id.toString();
+  async updateOne(entity: User): Promise<User> {
+    const modelProps = UserModelMapper.toModel(entity);
 
-    const updatedUser = await this.prisma.user.update({
-      where: { id: _id },
-      data,
+    const user = await this.prisma.user.update({
+      where: {
+        id: entity.props.id,
+      },
+      data: {
+        ...modelProps,
+      },
     });
 
-    return UserModelMapper.toEntity(updatedUser);
+    return UserModelMapper.toEntity(user);
   }
 
   async removeMany(ids: UserId[]): Promise<void> {

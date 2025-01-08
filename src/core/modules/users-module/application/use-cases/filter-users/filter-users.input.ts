@@ -11,8 +11,8 @@ import {
 import {
   FilterParams,
   OperatorsType,
-} from '../../../../../core/@seedwork/domain/repository/filter-params';
-import { UserFilterParams } from '../../domain/repository/user.repository';
+} from '../../../../../../core/@seedwork/domain/repository/filter-params';
+import { UserFilterParams } from '../../../domain/repository/user.repository';
 
 // Interface para os filtros de usuários
 export interface UserFilterParamsProps {

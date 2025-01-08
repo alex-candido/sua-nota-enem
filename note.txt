@@ -1,0 +1,4 @@
+todo:
+- updateMany: in progress 
+- removeMany: pendent
+- removeOne: pendent

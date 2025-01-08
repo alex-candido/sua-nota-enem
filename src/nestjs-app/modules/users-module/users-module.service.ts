@@ -16,16 +16,16 @@ import {
   UpdateUserModuleDto,
 } from './dtos/user.dto';
 
-import { CreateManyUsersUseCase } from '../../../core/modules/users-module/application/use-cases/create-many-users.use-case';
-import { FindAllUsersUseCase } from '../../../core/modules/users-module/application/use-cases/find-all-users.use-case';
-import { FindOneUserUseCase } from '../../../core/modules/users-module/application/use-cases/find-one-user.use-case';
-import { UpdateManyUsersUseCase } from '../../../core/modules/users-module/application/use-cases/update-many-users.use-case';
-import { UpdateOneUserUseCase } from '../../../core/modules/users-module/application/use-cases/update-one-user.use-case';
-import { RemoveManyUsersUseCase } from '../../../core/modules/users-module/application/use-cases/remove-many-users.use-case';
-import { RemoveOneUserUseCase } from '../../../core/modules/users-module/application/use-cases/remove-one-user.use-case';
-import { SearchUsersUseCase } from '../../../core/modules/users-module/application/use-cases/search-users.use-case';
-import { FilterUsersUseCase } from '../../../core/modules/users-module/application/use-cases/filter-users.use-case';
-import { CreateOneUserUseCase } from '../../../core/modules/users-module/application/use-cases/create-one-user.use-case';
+import { CreateManyUsersUseCase } from '../../../core/modules/users-module/application/use-cases/create-many-users/create-many-users.use-case';
+import { CreateOneUserUseCase } from '../../../core/modules/users-module/application/use-cases/create-one-user/create-one-user.use-case';
+import { FilterUsersUseCase } from '../../../core/modules/users-module/application/use-cases/filter-users/filter-users.use-case';
+import { FindAllUsersUseCase } from '../../../core/modules/users-module/application/use-cases/find-all-users/find-all-users.use-case';
+import { FindOneUserUseCase } from '../../../core/modules/users-module/application/use-cases/find-one-user/find-one-user.use-case';
+import { RemoveManyUsersUseCase } from '../../../core/modules/users-module/application/use-cases/remove-many-users/remove-many-users.use-case';
+import { RemoveOneUserUseCase } from '../../../core/modules/users-module/application/use-cases/remove-one-user/remove-one-user.use-case';
+import { SearchUsersUseCase } from '../../../core/modules/users-module/application/use-cases/search-users/search-users.use-case';
+import { UpdateManyUsersUseCase } from '../../../core/modules/users-module/application/use-cases/update-many-users/update-many-users.use-case';
+import { UpdateOneUserUseCase } from '../../../core/modules/users-module/application/use-cases/update-one-user/update-one-user.use-case';
 
 /* services: findAll, findOne, createMany, createOne,
 updateMany, updateOne, removeMany, removeOne, search, filter */
@@ -83,7 +83,7 @@ export class UsersModuleService {
   }
 
   async updateOne(id: string, updateUserModuleDto: UpdateUserModuleDto) {
-    return await this.updateOneUseCase.execute(id, updateUserModuleDto);
+    return await this.updateOneUseCase.execute({ id, ...updateUserModuleDto });
   }
 
   async removeMany(removeManyUserModuleDto: RemoveManyUserModuleDto) {

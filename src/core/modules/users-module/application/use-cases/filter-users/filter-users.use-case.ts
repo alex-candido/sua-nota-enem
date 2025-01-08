@@ -1,21 +1,21 @@
-import IUseCase from '../../../../../core/@seedwork/application/interfaces/use-case.interface';
+import IUseCase from '../../../../../../core/@seedwork/application/interfaces/use-case.interface';
 
-import { FilterUsersInput } from '../input/filter-user.input';
+import { FilterUsersInput } from '../filter-users/filter-users.input';
 
 import {
   IUserRepository,
   UserListFiltersParams,
   UserListResult,
-} from '../../domain/repository/user.repository';
-import { ListUsersOutput } from '../output/list-users.output';
-import { UserOutput } from '../output/user.output';
-import { PaginationOutput } from '../output/pagination-output';
+} from '../../../domain/repository/user.repository';
+
+import { ListUsersOutput } from '../../output/list-users.output';
+import { UserOutput } from '../../output/user.output';
+import { PaginationOutput } from '../../output/pagination-output';
 
 export class FilterUsersUseCase
   implements IUseCase<FilterUsersInput, ListUsersOutput>
 {
   constructor(private readonly userRepo: IUserRepository) {}
-
   async execute(input: FilterUsersInput): Promise<ListUsersOutput> {
     const params = new UserListFiltersParams(input);
     const filterResult = await this.userRepo.filter(params);

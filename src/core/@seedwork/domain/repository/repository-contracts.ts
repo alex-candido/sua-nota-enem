@@ -23,12 +23,19 @@ export interface IRepository<
   findOne(id: string | EntityId): Promise<E | null>;
   createMany(entities: E[]): Promise<void>;
   createOne(entity: E): Promise<E | void>;
-  updateMany(ids: EntityId[], entities: E[]): Promise<void>;
-  updateOne(id: string | EntityId, entity: E): Promise<E | void>;
+  updateMany(entities: E[]): Promise<any>;
+  updateOne(entity: E): Promise<E | void>;
   removeMany(ids: EntityId[]): Promise<void>;
   removeOne(id: string | EntityId): Promise<void>;
   search(props: Search): Promise<ListOutput>;
   filter(props: Filters): Promise<ListOutput>;
+
+  findById?(id: string | EntityId): Promise<E | null>;
+  findByIds?(ids: EntityId[]): Promise<E[] | null>;
+  existsById?(ids: EntityId[]): Promise<{
+    exists: EntityId[];
+    not_exists: EntityId[];
+  }>;
 }
 
 export interface SearchableRepositoryInterface<

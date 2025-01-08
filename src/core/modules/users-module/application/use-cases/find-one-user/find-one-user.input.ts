@@ -5,14 +5,13 @@ export interface FindOneUserInputProps {
 }
 
 export class FindOneUserInput {
-  @IsString() // Verifica se é uma string
-  @IsNotEmpty() // Garante que não está vazio
+  @IsString()
+  @IsNotEmpty()
   id: string;
 
   constructor(props: FindOneUserInputProps) {
-    if (props) {
-      Object.assign(this, props);
-    }
+    if (!props) return;
+    this.id = props.id;
   }
 }
 

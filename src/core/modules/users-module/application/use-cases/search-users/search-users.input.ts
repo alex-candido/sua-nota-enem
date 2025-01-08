@@ -5,9 +5,10 @@ import {
   IsString,
   validateSync,
 } from 'class-validator';
-import { UserFilterParamsProps } from './filter-user.input';
 import { Type } from 'class-transformer';
-import { FilterParams } from '../../../../../core/@seedwork/domain/repository/filter-params';
+
+import { UserFilterParamsProps } from '../filter-users/filter-users.input';
+import { FilterParams } from '../../../../../../core/@seedwork/domain/repository/filter-params';
 
 export enum SortDirection {
   ASC = 'asc',
