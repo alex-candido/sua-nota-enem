@@ -1,4 +1,6 @@
-todo:
-- updateMany: in progress 
+task 001: crate actions
+- updateMany: in progress
 - removeMany: pendent
 - removeOne: pendent
+
+task 002: crate seeds

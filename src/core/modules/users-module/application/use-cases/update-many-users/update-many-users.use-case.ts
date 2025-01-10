@@ -3,9 +3,9 @@ import { HttpException, HttpStatus } from '@nestjs/common';
 import IUseCase from '../../../../../../core/@seedwork/application/interfaces/use-case.interface';
 import { User, UserId } from '../../../domain/entities/user';
 import { IUserRepository } from '../../../domain/repository/user.repository';
+import { UserOutput } from '../../output/user.output';
 import { UpdateOneUserInput } from '../update-one-user/update-one-user.input';
 import { UpdateManyUsersInput } from './update-many-users.input';
-// import { UserOutput } from '../../output/user.output';
 
 export class UpdateManyUsersUseCase
   implements IUseCase<UpdateManyUsersInput[], any>
@@ -23,18 +23,27 @@ export class UpdateManyUsersUseCase
       );
     }
 
-    console.log(users[0].id);
+    const updatedUsers = await Promise.all(
+      users.map(async user => {
+        const input = inputs.find(input => input.id === user.props.id);
+        if (!input) {
+          throw new HttpException(
+            `Input data missing for user ID ${user.props.id}`,
+            HttpStatus.BAD_REQUEST,
+          );
+        }
 
-    // for (const user of users) {
-    //   const currUser = user.toJSON();
-    //   // const input = inputs.find(input => input.id === currUser.id);
-    //   console.log(inputs);
-    //   console.log(currUser);
-    // }
+        this.updateUserAttributes(user, input);
 
-    // return updatedUsers.map(user => {
-    //   return UserOutput.toOutput(user);
-    // });
+        return user;
+      }),
+    );
+
+    const updatedManyResult = await this.userRepo.updateMany(updatedUsers);
+
+    return updatedManyResult.map(user => {
+      return UserOutput.toOutput(user);
+    });
   }
 
   private updateUserAttributes(user: User, input: UpdateOneUserInput): void {

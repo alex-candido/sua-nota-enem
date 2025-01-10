@@ -64,11 +64,12 @@ Content-Type: application/json
 [
   {
     "id": "0b63c7fd-d622-4fc0-8ada-14fd1271a36f",
-    "email": "usuarioexemplo10@dominio.com"
+    "email": "usuarioexemplo24@dominio.com",
+    "username": "alex"
   },
   {
     "id": "da712ae2-0fd3-4098-bd18-36a687aac0d5",
-    "email": "usuarioexemplo11@dominio.com"
+    "email": "usuarioexemplo23@dominio.com"
   }
 ]
 
@@ -79,9 +80,9 @@ DELETE http://localhost:3333/v1/api/users/remove_one/0b63c7fd-d622-4fc0-8ada-14f
 DELETE http://localhost:3333/v1/api/users/remove_many
 Content-Type: application/json
 
-[ 
-  "0b63c7fd-d622-4fc0-8ada-14fd1271a36f", 
-  "0b63c7fd-d622-4fc0-8ada-14fd1271a36f", 
+[
+  "0b63c7fd-d622-4fc0-8ada-14fd1271a36f",
+  "0b63c7fd-d622-4fc0-8ada-14fd1271a36f",
   "0b63c7fd-d622-4fc0-8ada-14fd1271a36f"
 ]
 

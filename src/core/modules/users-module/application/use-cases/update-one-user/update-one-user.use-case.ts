@@ -1,9 +1,9 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
 
 import IUseCase from '../../../../../../core/@seedwork/application/interfaces/use-case.interface';
-import { UserOutput } from '../../output/user.output';
 import { User, UserId } from '../../../domain/entities/user';
 import { IUserRepository } from '../../../domain/repository/user.repository';
+import { UserOutput } from '../../output/user.output';
 import { UpdateOneUserInput } from '../update-one-user/update-one-user.input';
 
 export class UpdateOneUserUseCase
@@ -24,16 +24,16 @@ export class UpdateOneUserUseCase
 
     this.updateUserAttributes(user, input);
 
-    const updatedUser = await this.userRepo.updateOne(user);
+    const updatedResult = await this.userRepo.updateOne(user);
 
-    if (!updatedUser) {
+    if (!updatedResult) {
       throw new HttpException(
         `Entity Validation Error ${userId}`,
         HttpStatus.NOT_FOUND,
       );
     }
 
-    return UserOutput.toOutput(updatedUser);
+    return UserOutput.toOutput(updatedResult);
   }
 
   private updateUserAttributes(user: User, input: UpdateOneUserInput): void {

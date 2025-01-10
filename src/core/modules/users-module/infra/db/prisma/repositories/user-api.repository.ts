@@ -107,11 +107,11 @@ export class UserPrismaRepository implements IUserRepository {
     const modelsProps = entities.map(entity => {
       const model = UserModelMapper.toModel(entity);
       const { id: _id, ...updateData } = model;
-      return { id: entity.id, updateData };
+      return { id: entity.props.id, updateData };
     });
 
-    await this.prisma.$transaction(async tx => {
-      await Promise.allSettled(
+    const users = await this.prisma.$transaction(async tx => {
+      return await Promise.all(
         modelsProps.map(modelProps => {
           return tx.user.update({
             where: {
@@ -123,6 +123,10 @@ export class UserPrismaRepository implements IUserRepository {
           });
         }),
       );
+    });
+
+    return users.map(model => {
+      return UserModelMapper.toEntity(model);
     });
   }
 

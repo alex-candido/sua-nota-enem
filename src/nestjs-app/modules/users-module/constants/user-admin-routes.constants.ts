@@ -24,7 +24,7 @@ export const ADMIN_ROUTES = {
         METHOD: 'GET',
       },
       EDIT: {
-        ROUTE: '/edit',
+        ROUTE: '/edit/:id',
         PATH: '/admin/users/edit',
         METHOD: 'GET',
       },
