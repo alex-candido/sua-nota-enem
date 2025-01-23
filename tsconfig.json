@@ -6,6 +6,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
+    "useDefineForClassFields": false,
     "target": "ES2022",
     "lib": [
       "ES2021",
@@ -22,16 +23,18 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowJs": true,
-    "paths": {
-      "@core/*": [
-        "./src/core/*"
-      ],
-      "@nest/*": [
-        "src/nestjs-app/*"
-      ]
-    }
+    // "paths": {
+    //   "@core/*": [
+    //     "./src/core/*"
+    //   ],
+    //   "@nest/*": [
+    //     "src/nestjs-app/*"
+    //   ]
+    // }
   },
   "include": [
     "./src",

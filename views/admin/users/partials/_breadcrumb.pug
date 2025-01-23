@@ -1,0 +1,16 @@
+.layout-admin-breadcrumb
+  .breadcrumb
+    .breadcrumb-content(class='')
+      .flex.items-center.py-2
+        button.breadcrumb-trigger(type='button' class='' aria-haspopup='dialog' aria-expanded='false' aria-controls='hs-application-sidebar' aria-label='Toggle navigation' data-hs-overlay='#hs-application-sidebar')
+          span.sr-only Toggle Navigation
+          .icon
+            include ../../../base/icons/toggle-icon.pug
+        ol.breadcrumb-list
+          li.breadcrumb-layout(class='dark:text-neutral-400')
+            | Application Layout
+            .icon
+              include ../../../base/icons/chevron-right-icon.pug
+          li.breadcrumb-page(class='dark:text-neutral-400' aria-current='page')
+            | Dashboard
+

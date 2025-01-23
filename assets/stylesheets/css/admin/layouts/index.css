@@ -1,0 +1,8 @@
+@layer base {
+  html {
+    @apply min-h-screen;
+  }
+  .section {
+    @apply w-full pl-[16.2rem];
+  }
+}

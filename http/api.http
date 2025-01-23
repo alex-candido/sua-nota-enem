@@ -1,0 +1,93 @@
+# requests: findAll, findOne, createMany, createOne,
+# updateMany, updateOne, removeMany, removeOne, search, filter
+
+###
+GET http://localhost:3333/v1/api/users/find_one/0b63c7fd-d622-4fc0-8ada-14fd1271a36f
+
+###
+GET http://localhost:3333/v1/api/users/find_all?page=1&per_page=2&sort=username&sort_dir=asc
+
+###
+POST http://localhost:3333/v1/api/users/create_one
+Content-Type: application/json
+
+{
+  "email": "alex.candido10@mail.com",
+  "username": "alexcndd10",
+  "full_name": "Alex Candido",
+  "first_name": "Alex",
+  "last_name": "Candido",
+  "password": "senha123",
+  "role": "CLIENT",
+  "status": "ACTIVE"
+}
+
+###
+POST http://localhost:3333/v1/api/users/create_many
+Content-Type: application/json
+
+[
+  {
+    "email": "usuarioexemplo@dominio.com",
+    "username": "usuario_exemplo",
+    "full_name": "Usuário Exemplo",
+    "first_name": "Usuário",
+    "last_name": "Exemplo",
+    "password": "senha123",
+    "role": "CLIENT",
+    "status": "ACTIVE"
+  },
+  {
+    "email": "usuarioexemplo2@dominio.com",
+    "username": "usuario_exemplo2",
+    "full_name": "Usuário Exemplo 2",
+    "first_name": "Usuário 2",
+    "last_name": "Exemplo 2",
+    "password": "senha123",
+    "role": "CLIENT",
+    "status": "ACTIVE"
+  }
+]
+
+###
+PATCH http://localhost:3333/v1/api/users/update_one/0b63c7fd-d622-4fc0-8ada-14fd1271a36f
+Content-Type: application/json
+
+{
+  "email": "usuarioexemplo20@dominio.com"
+}
+
+###
+PATCH http://localhost:3333/v1/api/users/update_many
+Content-Type: application/json
+
+[
+  {
+    "id": "0b63c7fd-d622-4fc0-8ada-14fd1271a36f",
+    "email": "usuarioexemplo24@dominio.com",
+    "username": "alex"
+  },
+  {
+    "id": "da712ae2-0fd3-4098-bd18-36a687aac0d5",
+    "email": "usuarioexemplo23@dominio.com"
+  }
+]
+
+###
+DELETE http://localhost:3333/v1/api/users/remove_one/0b63c7fd-d622-4fc0-8ada-14fd1271a36f
+
+###
+DELETE http://localhost:3333/v1/api/users/remove_many
+Content-Type: application/json
+
+[
+  "0b63c7fd-d622-4fc0-8ada-14fd1271a36f",
+  "0b63c7fd-d622-4fc0-8ada-14fd1271a36f",
+  "0b63c7fd-d622-4fc0-8ada-14fd1271a36f"
+]
+
+###
+GET http://localhost:3333/v1/api/users/filter?filters={"key":"first_name","relation":"contains","values":["alex"],"mode": "insensitive", "operator": "contains"}&filters={"key":"last_name","relation":"contains","values":["candido"],"mode": "insensitive", "operator": "contains"}&page=1&per_page=5&sort="name"&sort_dir=asc
+
+###
+GET http://localhost:3333/v1/api/users/search?filter={"key":"first_name","value":"alex","mode": "insensitive", "operator": "contains"}&page=1&per_page=5&sort=username&sort_dir=asc

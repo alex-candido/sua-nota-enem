@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "./public/js",
+    "module": "esnext",
+    "target": "esnext"
+  },
+  "include": [
+    "assets/typescript/**/*"
+  ]
+}

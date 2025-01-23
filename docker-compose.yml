@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:      
+  notaenem_pg:
+    image: postgres:16.3
+    ports:
+      - 5435:5432
+    environment:
+      POSTGRES_USER: notaenem
+      POSTGRES_PASSWORD: notaenem
+      POSTGRES_DB: notaenem
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080
+
+volumes:
+  pg_data:

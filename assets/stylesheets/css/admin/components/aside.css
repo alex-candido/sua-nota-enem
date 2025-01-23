@@ -1,0 +1,19 @@
+@layer components {
+  .layout-admin-aside {
+    .aside {
+      @apply relative flex flex-col h-full max-h-full;
+    }
+    .aside-brand {
+      @apply px-6 pt-4 pb-2;
+    }
+    .brand-link {
+      @apply flex gap-2 text-white rounded-xl text-xl font-semibold focus:outline-none focus:opacity-80;
+    }
+    .aside-container {
+      @apply h-full overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-track]:bg-neutral-700 dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500;
+    }
+    .hs-accordion-group {
+      @apply p-3 w-full flex flex-col flex-wrap;
+    }
+  }
+}

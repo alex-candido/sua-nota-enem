@@ -1,0 +1,29 @@
+.layout-admin-navbar
+  header.navbar(class='')
+    nav.content.px-4(class='sm:px-6')
+      .navbar-brand.me-5(class='lg:me-0 lg:hidden')
+        a.navbar-link(class='focus:outline-none focus:opacity-80' href='#' aria-label='Preline')
+          .icon.block.md-hidden.fill-black(class="pb-[2px]")
+            object(type='image/svg+xml' data='/public/uploads/svg/nestjs-logo.svg')
+          .label.font-serif.text-black(class='dark:text-white')
+            span Admin
+      .navbar-menu
+        .navbar-start.hidden(class='!w-[18rem] md:block')
+          .navbar-item.relative
+            include ../../base/_input.pug
+        .navbar-end.flex.flex-row.items-center.justify-end.gap-1
+          .navbar-item
+            button.relative.inline-flex.justify-center.items-center.gap-x-2.text-sm.font-semibold.rounded-full.border.border-transparent.text-gray-800(type='button' class='md:hidden size-[38px] hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700')
+              i.fa-solid.fa-magnifying-glass
+              span.sr-only Search
+          .navbar-item
+            button.moon-mode.hs-dark-mode.inline-flex.items-center.gap-x-2.py-2.px-3.rounded-full.text-sm.text-gray-800(type='button' class='hs-dark-mode-active:hidden bg-white hover:bg-gray-100 border shadow-sm rounded-x focus:outline-none focus:bg-white/20 ' data-hs-theme-click-value='dark')
+              i.fa-solid.fa-moon
+              |   Dark
+            button.sun-mode.hs-dark-mode.hidden.items-center.gap-x-2.py-2.px-3.rounded-full.text-sm.text-white(type='button' class='hs-dark-mode-active:inline-flex border shadow-sm rounded-x dark:bg-neutral-800 dark:border-neutral-700 hover:bg-white/20 focus:outline-none focus:bg-white/20 dark:hover:bg-neutral-700' data-hs-theme-click-value='light')
+              i.fa-solid.fa-sun
+              |   Light
+          .navbar-item
+            // Dropdown
+
+

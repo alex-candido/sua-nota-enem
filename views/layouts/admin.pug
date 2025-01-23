@@ -1,0 +1,15 @@
+doctype html
+html(lang='pt-BR')
+    head
+        meta(charset='UTF-8')
+        meta(http-equiv='X-UA-Compatible' content='IE=edge')
+        title SuaNotaEnem
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet' href=`/css/tailwind-main.css`)
+    body.bg-gray-50.min-h-screen(class='dark:bg-neutral-900')
+        include ./admin/_aside.pug
+        include ./admin/_navbar.pug
+        block content
+        include ./admin/_footer.pug
+        script(type='module' src=`/js/main.js`)
+

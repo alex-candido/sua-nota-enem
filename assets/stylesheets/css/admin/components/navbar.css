@@ -1,0 +1,16 @@
+@layer components {
+  .layout-admin-navbar {
+    .navbar {
+      @apply sticky top-0 inset-x-0 flex flex-wrap w-full bg-white border-b text-sm md:justify-start md:flex-nowrap z-[48] py-2.5 lg:ps-[260px] dark:bg-neutral-800 dark:border-neutral-700;
+    }
+    .content {
+      @apply flex basis-full items-center w-full mx-auto;
+    }
+    .navbar-link {
+      @apply flex gap-1 rounded-md text-xl inline-block font-semibold;
+    }
+    .navbar-menu {
+      @apply w-full flex items-center justify-end ms-auto gap-x-1 md:justify-between md:gap-x-3;
+    }
+  }
+}

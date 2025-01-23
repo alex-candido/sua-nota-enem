@@ -1,0 +1,6 @@
+references:
+ack-nestjs-boilerplate
+NestJS-EJS-MVC-boilerplate
+nestjs-mvc
+nestjs-mvc-boilerplate
+nestjs-tsx-views

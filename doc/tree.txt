@@ -1,0 +1,182 @@
+src
+├── app-global-config.ts
+├── app-repl.ts
+├── app-swagger.ts
+├── core
+│   ├── modules
+│   │   └── users-module
+│   │       ├── application
+│   │       │   ├── input
+│   │       │   │   ├── create-many-users.input.ts
+│   │       │   │   ├── create-one-user.input.ts
+│   │       │   │   ├── filter-user.input.ts
+│   │       │   │   ├── find-all-users.input.ts
+│   │       │   │   ├── find-one-user.input.ts
+│   │       │   │   ├── remove-many-user.input.ts
+│   │       │   │   ├── remove-one-user.input.ts
+│   │       │   │   ├── search-user.input.ts
+│   │       │   │   ├── update-many-user.input.ts
+│   │       │   │   └── update-one-user.input.ts
+│   │       │   ├── output
+│   │       │   │   ├── list-users.output.ts
+│   │       │   │   ├── pagination-output.ts
+│   │       │   │   └── user.output.ts
+│   │       │   └── use-cases
+│   │       │       ├── create-many-users.use-case.ts
+│   │       │       ├── create-one-user.use-case.ts
+│   │       │       ├── filter-users.use-case.ts
+│   │       │       ├── find-all-users.use-case.ts
+│   │       │       ├── find-one-user.use-case.ts
+│   │       │       ├── remove-many-users.use-case.ts
+│   │       │       ├── remove-one-user.use-case.ts
+│   │       │       ├── search-users.use-case.ts
+│   │       │       ├── update-many-users.use-case.ts
+│   │       │       └── update-one-user.use-case.ts
+│   │       ├── domain
+│   │       │   ├── entities
+│   │       │   │   └── user.ts
+│   │       │   ├── model
+│   │       │   │   └── User.ts
+│   │       │   ├── repository
+│   │       │   │   └── user.repository.ts
+│   │       │   ├── rules
+│   │       │   │   └── user.rules.ts
+│   │       │   └── validators
+│   │       │       └── user.validator.ts
+│   │       ├── infra
+│   │       │   └── db
+│   │       │       ├── in-memory
+│   │       │       │   ├── clauses
+│   │       │       │   ├── mappers
+│   │       │       │   │   └── user-model.mapper.ts
+│   │       │       │   └── repositories
+│   │       │       │       ├── user-api-in-memory.repository.ts
+│   │       │       │       └── user-system-in-memory.repository copy.ts
+│   │       │       └── prisma
+│   │       │           ├── clauses
+│   │       │           │   ├── build-order-by-clause.ts
+│   │       │           │   ├── build-transaction-clause.ts
+│   │       │           │   └── build-where.clause.ts
+│   │       │           ├── mappers
+│   │       │           │   └── user-model.mapper.ts
+│   │       │           └── repositories
+│   │       │               ├── user-api.repository.ts
+│   │       │               └── user-system.repository.ts
+│   │       └── __tests__
+│   │           ├── integration
+│   │           └── unit
+│   └── @seedwork
+│       ├── application
+│       │   └── interfaces
+│       │       ├── pagination-output.interface.ts
+│       │       └── use-case.interface.ts
+│       ├── domain
+│       │   ├── entity
+│       │   │   ├── aggregate-root.ts
+│       │   │   └── entity.ts
+│       │   ├── errors
+│       │   │   ├── already-exists-error.ts
+│       │   │   ├── invalid-date.error.ts
+│       │   │   ├── invalid-uuid.error.ts
+│       │   │   ├── not-found.error.ts
+│       │   │   └── validation-error.ts
+│       │   ├── repository
+│       │   │   ├── filter-params.ts
+│       │   │   ├── list-filters-params.ts
+│       │   │   ├── list-result.ts
+│       │   │   ├── pagination-params.ts
+│       │   │   ├── repository-contracts.ts
+│       │   │   └── search-params.ts
+│       │   ├── utils
+│       │   │   ├── auto-getter-setter.ts
+│       │   │   └── object.ts
+│       │   ├── validators
+│       │   │   ├── class-validator-fields.ts
+│       │   │   └── validator-fields-interface.ts
+│       │   └── value-objects
+│       │       ├── created_at.vo.ts
+│       │       ├── unique-entity-id.vo.ts
+│       │       └── value-object.ts
+│       └── infra
+├── main.ts
+└── nestjs-app
+    ├── app.controller.ts
+    ├── app.module.ts
+    ├── app.service.ts
+    ├── modules
+    │   ├── default-module
+    │   │   └── react-module.module.ts
+    │   └── users-module
+    │       ├── constants
+    │       │   ├── user-admin-routes.constants.ts
+    │       │   ├── user-api-routes.constants.ts
+    │       │   ├── user-collection.constant.ts
+    │       │   ├── user.constant.ts
+    │       │   └── user-system-routes.constants.ts
+    │       ├── documentation
+    │       │   ├── create-many-route-api-response.doc.ts
+    │       │   ├── create-route-api-response.doc.ts
+    │       │   ├── find-all-route-api-response.doc.ts
+    │       │   ├── find-one-route-api-response.doc.ts
+    │       │   ├── index.ts
+    │       │   ├── remove-many-route-api-response.doc.ts
+    │       │   ├── remove-one-route-api-response.doc.ts
+    │       │   ├── update-many-route-api-response.doc.ts
+    │       │   └── update-one-route-api-response.doc.ts
+    │       ├── dtos
+    │       │   ├── user-collection.dto.ts
+    │       │   └── user.dto.ts
+    │       ├── presenters
+    │       │   ├── user-collection.presenter.ts
+    │       │   └── user.presenter.ts
+    │       ├── providers
+    │       │   └── user.providers.ts
+    │       ├── serializes
+    │       │   ├── user-collection.serialize.ts
+    │       │   └── user.serialize.ts
+    │       ├── __tests__
+    │       │   ├── integration
+    │       │   ├── unit
+    │       │   ├── users-module.admin.controller.spec.ts
+    │       │   ├── users-module.api.controller.spec.ts
+    │       │   └── users-module.service.spec.ts
+    │       ├── users-module-admin.controller.ts
+    │       ├── users-module-api.controller.ts
+    │       ├── users-module.module.ts
+    │       ├── users-module.service.ts
+    │       └── users-module-system.controller.ts
+    ├── routes
+    │   ├── admin-module
+    │   │   └── admin.module.ts
+    │   ├── api-module
+    │   │   └── api.module.ts
+    │   └── router.module.ts
+    └── @share
+        ├── config
+        │   ├── @config.module.ts
+        │   ├── envs
+        │   │   ├── app.config.ts
+        │   │   ├── database.config.ts
+        │   │   ├── security.config.ts
+        │   │   ├── swagger.config.ts
+        │   │   └── views.config.ts
+        │   └── global
+        │       └── env.config.ts
+        ├── container
+        │   └── adapters
+        │       └── fastify.adapter.ts
+        ├── database
+        │   ├── @database.module.ts
+        │   └── prisma
+        │       ├── implementations
+        │       │   └── prisma.service.ts
+        │       ├── prisma.module.ts
+        │       └── seeds
+        └── __types__
+            └── envs
+                ├── app-schema.d.ts
+                ├── db-schema.d.ts
+                ├── index.d.ts
+                ├── security-schema.d.ts
+                ├── swagger-schema.d.ts
+                └── views-schema.d.ts
